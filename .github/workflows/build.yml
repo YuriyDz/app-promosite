@@ -1,4 +1,4 @@
-```name: CI/CD
+name: CI/CD
 
 on:
   push:
@@ -17,13 +17,10 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18'
-
-    - name: Create env file
-      run: |
-        touch .env
-        echo "${{ secrets.ENV }}" > .env
-        cat .env
         
+    - name: Show GitHub Actor
+      run: echo $GITHUB_ACTOR
+
     - name: Install npm dependencies
       run: npm install
 
@@ -32,6 +29,11 @@ jobs:
       
     - name: Install PM2
       run: npm install pm2 -g
+
+    - name: Start React app with PM2
+      run: pm2 start npm --name "online-chat-client" -- start -- --port 8080
+      env:
+        PM2_PUBLIC: true # Дозволяємо PM2 служити додаток на відкритому порті
 
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@main
@@ -42,15 +44,3 @@ jobs:
         REMOTE_USER: ${{ secrets.USERNAME }}
         TARGET: ${{ secrets.REMOTE_TARGET }}
         EXCLUDE: "/node_modules/"
-
-    - name: PM2 restart
-      run: |
-        touch key.pem
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
-        chmod 400 key.pem
-        ssh -i key.pem ${{secrets.USERNAME}}@${{secrets.HOST_DNS}} -p 22 '
-        pm2 kill
-        cd /home/ec2-user/online-chat/
-        pm2 start npm --name "online-chat" -- start -- --port 3000
-        '
-```

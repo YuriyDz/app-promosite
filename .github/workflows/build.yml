@@ -39,7 +39,7 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         ARGS: "-rlgoDzvc -i --delete"
         REMOTE_HOST: ${{ secrets.HOST_DNS }}
-        REMOTE_USER: ${{ secrets.USERNAME }}
+        REMOTE_USER: ${{ secrets.USER_NAME }}
         TARGET: ${{ secrets.REMOTE_TARGET }}
         EXCLUDE: "/node_modules/"
 

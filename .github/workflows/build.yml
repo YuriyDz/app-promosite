@@ -45,10 +45,10 @@ jobs:
 
     - name: PM2 restart
       run: |
-        touch key.pem
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
-        chmod 400 key.pem
-        ssh -i key.pem ${{secrets.USERNAME}}@${{secrets.HOST_DNS}} -p 22 '
+        touch promoSite.pem
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > promoSite.pem
+        chmod 400 promoSite.pem
+        ssh -i promoSite.pem ${{secrets.USERNAME}}@${{secrets.HOST_DNS}} -p 22 '
         pm2 kill
         cd /home/ec2-user/app-promosite/
         pm2 start npm --name "app-promosite" -- start -- --port 3000

@@ -111,7 +111,7 @@ import "./regiater.css";
     function register(){
        
         
-   // alert("Реєстрація пройшла успішно");
+   // alert("Реєстрація пройшла успішно");hhhhhj
      usersData[userNamea] = [email,password];
      setCorrectPasword('');
      setPassword('');

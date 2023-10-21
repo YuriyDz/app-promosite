@@ -43,7 +43,7 @@ import "./regiater.css";
         setCorrectPasword(event.target.value);
       };
       if(a ===  '✅' && b === '✅' && c === '✅'){
-      register()}
+      registe()}
     const confimeEmail=(e)=>{
         let b =false;
         if(email !== ''){      
@@ -108,7 +108,7 @@ import "./regiater.css";
                 setC("Заповніть червоні поля");
           }
     }
-    function register(){
+    function registe(){
        
         
    // alert("Реєстрація пройшла успішно");hhhhhj

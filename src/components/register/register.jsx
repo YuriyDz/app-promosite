@@ -126,7 +126,7 @@ import "./regiater.css";
     
 return(
    
-    <box className='box'>
+    <div className='box'>
         
     <label>
         {a}
@@ -148,7 +148,7 @@ return(
 
     </label>
 <button onClick={correct}></button>
-</box>
+</div>
 );
 }
 //export default Register;

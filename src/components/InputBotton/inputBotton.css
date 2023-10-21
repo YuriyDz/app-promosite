@@ -1,0 +1,33 @@
+.buttonLock{
+    display: flex;
+    width: 80px;
+    flex-direction: column;
+height: 40px;
+left: 480px;
+display: flex;
+background-color: rgba(0,0,0,0);
+color: gray;
+}
+.buttonOk{
+    display: flex;
+width: 80px;
+flex-direction: column;
+height: 40px;
+left: 480px;
+display: flex;
+background-color: rgba(0,0,0,0);
+font-weight: 800;
+color: black;
+border: none;
+}
+.form{
+background-color:lightskyblue;
+width: auto;
+height: 150px;
+}
+.form2{
+background-color: azure;
+width: 1000px;
+height: auto;
+
+}

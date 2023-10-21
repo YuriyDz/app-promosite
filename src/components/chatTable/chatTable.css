@@ -1,0 +1,52 @@
+.button {
+    position: center;
+background-color: rgba(0,0,0,0);
+height: auto;
+width: 550px;
+border: none;
+}
+.buttonLeft{
+    
+        background-color: blueviolet;
+        height: 20px;
+        width: 60px;
+        top: 10px;
+        left: 330px;
+        
+
+}
+.card{
+    border: none;
+background-color: lightblue;
+height: auto;
+width: 550px;
+}
+.text{
+color: black;
+border: none;
+background-color: none;
+}
+.user{
+position: center;    
+color: black;
+background-color:aqua;
+height: 25px;
+width: auto;
+
+font-weight: 800;
+
+}
+.card1{
+    position: center;
+    border: none;
+    background-color: lightgreen;
+    height: auto;
+    width: 550px;
+
+}
+.card2{
+    border: none;
+background-color: lightpink;
+height: auto;
+width: 550px;
+}

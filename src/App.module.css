@@ -1,5 +1,8 @@
 .App {
+  background-color: yellow;
   text-align: center;
+  height: auto;
+  width: auto;
 }
 
 .App-logo {
@@ -13,6 +16,7 @@
   }
 }
 
+/*
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -23,7 +27,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+*/
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +39,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+.textLable{
+bottom: 30px;
+}
+.form{
+  color: darkblue;
+  background-color:lightskyblue;
+  width: auto;
+  height: 500px;
 }

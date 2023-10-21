@@ -1,0 +1,12 @@
+.redLable{
+    background-color: lightcoral;
+}
+.whiteLable{
+    background-color: white;
+}
+#box{
+
+height: 300px;
+width: 150px;
+background: aquamarine;
+}

@@ -14,7 +14,7 @@ import "./regiater.css";
     const[d,setD]=useState(measeges_for_user[8]);
      
    /* const handleEmailChange = (event) => {
-        setEmail(event.form.valuea);
+        setEmail(event.form.valuea);jhhjhjhjhj
         setUserNamea(event.form.value);
         setPasword(event.form.valueb);
         setCorrectPasword(event.form.valuec);

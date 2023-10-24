@@ -2,7 +2,7 @@ import { useState} from 'react';
 import { usersData, measeges_for_user} from '../../users';
 import "./regiater.css";
     
-
+//✅
  export function Register() {
     const[userNamea,setUserNamea]=useState('');
     const[email,setEmail]=useState('');
@@ -10,8 +10,9 @@ import "./regiater.css";
     const[correctPasword,setCorrectPasword]=useState('');
     const[a,setA]=useState(measeges_for_user[0]);
     const[b,setB]=useState(measeges_for_user[1]);
+   const[dm,setDm]= useState(measeges_for_user[8]);
     const[c,setC]=useState(measeges_for_user[2]);
-    const[d,setD]=useState(measeges_for_user[8]);
+   
      
    /* const handleEmailChange = (event) => {
         setEmail(event.form.valuea);jhhjhjhjhj
@@ -20,16 +21,7 @@ import "./regiater.css";
         setCorrectPasword(event.form.valuec);
         
     };*/
-    function correct(){
-        if(password && correctPasword){
-            correctpasword();
-        }
-        confimeEmail();
-        
-        correctUserName();
-        correctpasword();
-        CorrectRedister();
-    }
+   
     const handleUserChange = (event) => {
         setUserNamea(event.target.value);
       };
@@ -42,112 +34,144 @@ import "./regiater.css";
       const handleCorrectPasswordChange = (event) => {
         setCorrectPasword(event.target.value);
       };
-      if(a ===  '✅' && b === '✅' && c === '✅'){
-      registe()}
-    const confimeEmail=(e)=>{
-        let b =false;
-        if(email !== ''){      
-            let t = email.split('');
-            for(let h in t){
-                console.log(h);
-                if(t[h] === '@'){
-                 b = true;
-                }
-            }
-        if(b == false){
-            setB(measeges_for_user[4]);
-            setEmail('');
-        }
-        else{
-            setB(measeges_for_user[7]);
-        } 
-    }
-    };
-    
-    const correctUserName=()=>{
-        let uc = [];
-        console.log(usersData[userNamea],typeof(uc[2]));
-        if(String(usersData[userNamea])!==String(typeof(uc[2]))){
-           // console.log(textu);
-                    setA(measeges_for_user[3]);
-                    setUserNamea('');
-        }
-        else{
-            setA(measeges_for_user[7]);
-        }
-        
-        
-    };
-    const correctpasword = () =>{
-            if(password !== correctPasword){
-                 setC(measeges_for_user[5]);
-                setCorrectPasword('');
-            }
-            else{
-                setC(measeges_for_user[7]);
-            }
-
-    };
-    function CorrectRedister(){
-       let t = true;
-      
-          switch(''){
-             case userNamea:
-               
-               setA("Заповніть червоні поля");
-              t = false;
-            case email:
-                
-                setB("Заповніть червоні поля");
-                t= false;
-             case password: 
-                 
-                 setD("Заповніть червоні поля");
-                 t = false;
-             case correctPasword:
-                setC("Заповніть червоні поля");
-          }
-    }
-    function registe(){
+     function correct(){
        
+       if(email===''){
+                setB(`${measeges_for_user[1]} ${measeges_for_user[6]}`);
+       }
+            if(userNamea===''){
+                setA(`${measeges_for_user[0]} ${measeges_for_user[6]}`);
+               }
+            if(correctPasword===''){
+                setC(`${measeges_for_user[2]} ${measeges_for_user[6]}`);
+            }
+            if(password === ''){
+                setDm(`${measeges_for_user[8]} ${measeges_for_user[6]}`);
+            }
+        console.log(c);
+        console.log("1",email,"2",userNamea,"3",password,"4",correctPasword);
+           let e=correctEmail(email);
+           let u=correctName(userNamea);
+           let p=password;
+           let pc = correctAgainPassword(correctPasword,password);
+        if('uncorrect' === e){
+            
+                setB(measeges_for_user[4]);
+                setEmail('');
+                e = '';
+        }
+        if('uncorrect' === u){
+                setA(measeges_for_user[3]);
+                setUserNamea('');
+                u = '';
+        }
+        if('uncorrect' === pc){
+                setC(measeges_for_user[5]);
+                setCorrectPasword('');
+                pc = '';
+        }
+        let confimereg = 0;
         
-   // alert("Реєстрація пройшла успішно");hhhhhj
-     usersData[userNamea] = [email,password];
-     setCorrectPasword('');
-     setPassword('');
-     setEmail('');
-     setUserNamea('');
-     setA(measeges_for_user[0]);
-     setB(measeges_for_user[1]);
-     setC(measeges_for_user[2]);
-     setD(measeges_for_user[8]);
-      }
+            if(e){
+                setB('✅');
+                confimereg = confimereg +1;
+            }
+            if(u){
+                setA('✅');
+                confimereg = confimereg +1;
+            }
+           if(pc){
+                setC('✅');
+                confimereg = confimereg +1;
+           }
+          
+           if(p){
+               
+                setDm('✅');
+                confimereg = confimereg +1;
+           }
+           console.log(dm);
+       if(confimereg == 4){
+            usersData[userNamea] = [email,password];
+            alert("Реєстрація пройшла успішно");
+       }
+     }
+     function correctAgainPassword(p,pc){
+        if(pc === '' || p === '') return '';
+        if(p === pc){
+            return pc;
+        }
+        else{
+            return 'uncorrect';
+        }
+
+     }
+     function correctName (u){
+        if(u === '') return '';
+        let b = true;
+             for(let i in usersData){
+                 if(i === u){
+                    b = false;
+                    break;
+                 }
+             }
+             if(b == true){
+                return u;
+             }
+             else{
+                return 'uncorrect';
+             }
+     }
+     function correctEmail (u){
+        if(u === '') return '';
+              let b = false;
+              for(let i in u){
+                 if(u[i]=='@' && i != 0 && i != u.length-1){
+                    if(b == false){
+                        b = true;
+                    }
+                    else{
+                        b = false;
+                        break;
+                    }
+              
+                 
+                }}
+            if(b == true){
+                return  u;
+            }    
+            else return 'uncorrect';
+            
+            }
     
     
 return(
    
-    <div>
+    <div  className='box'>
+       <p>{a}</p> 
+    <label>
         
-    <label>
-        {a}
-    <input className={a === "Заповніть червоні поля"?'redLable':'whiteLable'}  type="userNamea" value={userNamea} onChange={handleUserChange} />
+    <input className={a === `${measeges_for_user[0]} ${measeges_for_user[6]}`?'redLable':'whiteLable'}  type="userNamea" value={userNamea} onChange={handleUserChange} />
 </label>
-
+<p>{b}</p>
 <label>
-        {b}
-    <input className={b === "Заповніть червоні поля"?'redLable':'whiteLable'} type="email" value={email} onChange={handleEmailChange}/>
+        
+    <input className={b === `${measeges_for_user[1]} ${measeges_for_user[6]}`?'redLable':'whiteLable'} type="email" value={email} onChange={handleEmailChange}/>
 </label>
+<p>{dm}</p>
 <label>
-     Ваш пароль
-    <input className={d === "Заповніть червоні поля"?'redLable':'whiteLable'}type="curent-password" value={password} onChange={handlePasswordChange}/>
+     
+    <input className={dm === `${measeges_for_user[8]} ${measeges_for_user[6]}`?'redLable':'whiteLable'}type="curent-password" value={password} onChange={handlePasswordChange}/>
 
     </label>
+    <p>{c}</p>
     <label>
-    {c}
-    <input className = {c === "Заповніть червоні поля"?'redLable':'whiteLable'} type="correctPasword" value={correctPasword} onChange={handleCorrectPasswordChange}/>
+    
+    <input className = {c === `${measeges_for_user[2]} ${measeges_for_user[6]}`?'redLable':'whiteLable'} type="correctPasword" value={correctPasword} onChange={handleCorrectPasswordChange}/>
 
     </label>
-<button onClick={correct}></button>
+    <p></p>
+<button className='button1' onClick={correct}>Підтвердити реєстрацію</button>
 </div>
 );
 }

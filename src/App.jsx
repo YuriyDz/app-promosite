@@ -17,7 +17,31 @@ export function onDelete(id){
 }
 
 function App() {
-  return <Register/>;
+  let i = prompt("тип 1 або 2");
+  if(i === '1'){
+  return(
+     <p>
+      
+ 
+ 
+    <Chat/>
+  </p>
+  
+  
+  );
+  }
+  else{
+    return(
+      <p>
+       
+   <Register/>
+  
+    
+   </p>
+   
+   
+   );
+  }
   }
 
 //export default  { deleteChange};

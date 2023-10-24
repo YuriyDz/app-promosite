@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import css from './App.module.css';
+import './App.module.css';
 import { ChatTable } from './components/chatTable/chatTable';
 import modalWindow from './components/modalWindowInput/modalWindw';
 import {InterfaceTable}  from './components/InputBotton/InputBotton';
@@ -15,12 +15,12 @@ function Chat() {
     const[send,setSend]=useState(true);
     const[isOwner,setIsOwner]=useState(false);
     const[user,setUser]=useState("quest");
-    OverlayScrollbars ( {  
+  /*  OverlayScrollbars ( {  
       target : document . querySelector ( '#target' ) , 
       scrollbars : { 
         slot : document . querySelector ( '#chatTable' ) . parentElement , 
       } , 
-     } ,  { } ) ;
+     } ,  { } ) ;*/
     //Модальне вікно з пітвердженням
     //___|___потребує вдосконалення___|___
     //   V                            V   
@@ -92,18 +92,22 @@ function Chat() {
         };
         console.log(modalOpen);
     return (
-      <div className={css.App}>
-         <modalWindow open={modalOpen} close={closeModal}></modalWindow>
-         <box className={css.form}>
+      <div className='app'>
+        
+         <box className='form'>
+               
+              
+              
+               <InterfaceTable  id = {cid} func = {deleteChange} userOwner={isOwner}></InterfaceTable>
+               <div className='tableform'>
+               <ChatTable userOwner = {user} cid = {cid} func = {idSelect} chatTable={chatData}></ChatTable>
+               </div>
+               <div>
                <ButtonSubmit isSend={send} doSend={doSend}></ButtonSubmit> 
                <label>
-                    <input className ='textLable.css' type="chatText" value={chatText} onChange={handleEmailChange} />
+                    <input className ='textLable' type="chatText" value={chatText} onChange={handleEmailChange} />
                </label>
-               
-               <InterfaceTable id = {cid} func = {deleteChange} userOwner={isOwner}></InterfaceTable>
-               <iframe src = "OverlayScrollbars" style="width:100%;height:100vh">
-               <ChatTable  userOwner = {user} cid = {cid} func = {idSelect} chatTable={chatData}></ChatTable>
-               </iframe>
+               </div>
          </box>
       </div>
     );

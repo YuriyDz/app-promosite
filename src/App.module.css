@@ -49,3 +49,14 @@ bottom: 30px;
   width: auto;
   height: 500px;
 }
+.form-button-submit{
+width: auto;
+height: 200px;
+background-color: aqua;
+}
+.tableform{
+  
+width: 1000px;
+height: 1000px;
+background-color: black;
+}

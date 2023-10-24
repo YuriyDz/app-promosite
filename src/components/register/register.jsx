@@ -126,7 +126,7 @@ import "./regiater.css";
     
 return(
    
-    <div className='box'>
+    <div>
         
     <label>
         {a}

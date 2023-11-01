@@ -26,9 +26,6 @@ jobs:
         
     - name: Install npm dependencies
       run: npm install
-      
-    - name: opao
-      run: npm install -g serve
 
     - name: oofp
       run: serve -s build

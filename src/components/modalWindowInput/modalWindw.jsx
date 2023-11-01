@@ -1,5 +1,5 @@
 //Хлам код потребує вдосконалення
-import "./modalWindow.css";
+/*import "./modalWindow.css";
 import React from "react";
 const modalWindow =({open,close})=>{
     console.log("fkfkgkghkhhkhkfk");
@@ -21,4 +21,4 @@ return(
 );
 }
 };
-export default modalWindow;
+export default modalWindow;*/

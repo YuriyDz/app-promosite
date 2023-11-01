@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import logo from './logo.svg';
+/*import logo from './logo.svg';
 import css from './App.module.css';
 import { ChatTable } from './components/chatTable/chatTable';
 import modalWindow from './components/modalWindowInput/modalWindw';
@@ -7,7 +7,7 @@ import {InterfaceTable}  from './components/InputBotton/InputBotton';
 import { render } from '@testing-library/react';
 import { chatTable } from './chat_data';
 import { ButtonSubmit } from './components/ButtonSubmit/butthonSubmit';
-import { useState , useRef} from 'react';
+import { useState , useRef} from 'react';*/
 import {Register} from './components/register/register';
 import { Login } from './components/login/login';
 import {Chat} from './components/chat/chat';

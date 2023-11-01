@@ -51,7 +51,7 @@ jobs:
       run: |
         touch key.pem
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
-        chmod ${{secrets.USERNAME}} key.pem
+        chmod 400 key.pem
         ssh -i key.pem ${{secrets.USERNAME}}@${{secrets.HOST_DNS}} -p 22 '
         pm2 kill
         cd /home/ec2-user/app-promosite/

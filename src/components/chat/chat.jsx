@@ -1,7 +1,6 @@
 //import logo from './logo.svg';
 import { addusers } from '../scripts/addUsers';
 import './chattt.css';
-import { Slap,ReturnMass } from '../slap/slap';
 import { ChatTable } from '../chatTable/chatTable';
 //import modalWindow from '../modalWindowInput/modalWindw';
 import {InterfaceTable}  from '../InputBotton/InputBotton';

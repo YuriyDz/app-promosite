@@ -2,13 +2,14 @@ import { renderHook } from "@testing-library/react";
 import { usersData } from "../../users";
 import { measeges_for_user} from '../../users';
 import { useState} from 'react';
+import "./login.css";
 export function Login() {
     const[userNameEmail,setUserNameEmail]=useState('');
    
     const[password,setPassword]=useState('');
    
     const[a,setA]=useState(measeges_for_user[0]);
-    const[b,setB]=useState(measeges_for_user[1]);
+    const[b,setB]=useState(measeges_for_user[8]);
    
      
    /* const handleEmailChange = (event) => {
@@ -44,7 +45,7 @@ export function Login() {
            
       
         if('uncorrect' === u){
-                setA(measeges_for_user[3]);
+                setA("Такого нік-нейма нема");
                 setUserNameEmail('');
                 u = '';
         }
@@ -119,7 +120,7 @@ return(
 <p>{b}</p>
 <label>
         
-    <input className={b === `${measeges_for_user[1]} ${measeges_for_user[6]}`?'redLable':'whiteLable'} type="email" value={password} onChange={handlePasswordChange}/>
+    <input className={b === `${measeges_for_user[8]} ${measeges_for_user[6]}`?'redLable':'whiteLable'} type="email" value={password} onChange={handlePasswordChange}/>
 </label>
 
     <p></p>

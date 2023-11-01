@@ -1,0 +1,26 @@
+.redLable{
+    background-color: lightcoral;
+}
+.whiteLable{
+    background-color: white;
+}
+.box{
+    background-color: aquamarine;
+    border-radius: 35px;
+    text-align: center;
+    margin-top: 100px;
+margin-left: 500px;
+height: 450px;
+width: 450px;
+}
+.button1{
+    
+   justify-content: center;
+   align-items: center;
+   position:static;
+height: 40px;
+width:  120px;
+background-color: green;
+color: white;
+
+}

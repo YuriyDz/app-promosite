@@ -9,7 +9,7 @@ import { chatTable } from './chat_data';
 import { ButtonSubmit } from './components/ButtonSubmit/butthonSubmit';
 import { useState , useRef} from 'react';
 import {Register} from './components/register/register';
-import { Login } from './components/register/login';
+import { Login } from './components/login/login';
 import {Chat} from './components/chat/chat';
 //export var open = false;
 export function onDelete(id){

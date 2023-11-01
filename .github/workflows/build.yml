@@ -30,9 +30,6 @@ jobs:
     - name: opao
       run: npm i -g json-server
 
-    - name: run json server
-      run: npm run server --if-present  
-
     - name: Run build task
       run: CI= npm run build --if-present
        

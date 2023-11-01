@@ -1,7 +1,8 @@
 import React from "react";
+import "./butthonSubmit.css";
 export const ButtonSubmit = ({isSend,doSend}) => {
     if(isSend == true){
-        return <button onClick={() => doSend()}>send</button>;
+        return <button className="button4" onClick={() => doSend()}>send</button>;
     }
-    return <button onClick={() => doSend()}>OK</button>;
+    return <button className="button4" onClick={() => doSend()}>OK</button>;
 };

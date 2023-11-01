@@ -1,0 +1,42 @@
+.textLable{
+    left: 20px;
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 405px;
+    height: 35px;
+    font-size: 25px;
+
+}
+.form{
+      color: darkblue;
+      background-color:lightskyblue;
+      width: auto;
+      height: 500px;
+}
+.form-button-submit{
+    width: auto;
+    height: 200px;
+    background-color: aqua;
+}
+.button-slap{
+    margin-top: 5px;
+   
+    margin-left: 5px;
+background-color: white;
+width: 40px;
+height: 40px;
+color: black;
+border: none;
+}
+.conteiner{
+     
+    max-width: 500px;
+    max-height: 500px;
+    color: black;
+}
+.form1{
+display: flex; 
+background-color:lightskyblue;
+width: auto;
+height: 50px;
+} 

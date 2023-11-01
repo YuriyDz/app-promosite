@@ -20,7 +20,7 @@ export const needUnder = (text) => {
     return arrn;
     }
 };
-export const ChatTable = ({userOwner,cid,func,chatTable}) => {
+export const ChatTable = ({userOwner,cid,func,chatTable,funcSeve}) => {
     const chatDataRenderer = chatTable.map((value,index) => {
         if(cid == index){
             if(value[0] == userOwner){
@@ -37,7 +37,7 @@ export const ChatTable = ({userOwner,cid,func,chatTable}) => {
                 return(
                     <p className='card2'>
                         <button className='button' onClick={() => func(index)}>
-                           <b className='user'>{value[0]}</b>
+                           <b className='user'> {value[0]} </b>
                            <p className='text'>{needUnder(value[1])}</p>
                         </button>
                     </p>
@@ -49,7 +49,7 @@ export const ChatTable = ({userOwner,cid,func,chatTable}) => {
                 return(
                     <p className='card'>
                         <button className='button' onClick={() => func(index)}>
-                            <b className='user'>you</b>
+                            <b className='user'> you </b>
                             <p className='text'>{needUnder(value[1])}</p>
                         </button>
                     </p>
@@ -59,7 +59,7 @@ export const ChatTable = ({userOwner,cid,func,chatTable}) => {
                 return(
                     <p className='card'>
                         <button className='button' onClick={() => func(index)}>
-                            <b className='user'>{value[0]}</b>
+                            <b className='user'> {value[0]} </b>
                             <p className='text'>{needUnder(value[1])}</p> 
                         </button>
                     </p>
@@ -68,5 +68,6 @@ export const ChatTable = ({userOwner,cid,func,chatTable}) => {
         }
     }
 );
+funcSeve();
 return chatDataRenderer;
 }

@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import logo from './logo.svg';
 import css from './App.module.css';
 import { ChatTable } from './components/chatTable/chatTable';
@@ -8,7 +9,8 @@ import { chatTable } from './chat_data';
 import { ButtonSubmit } from './components/ButtonSubmit/butthonSubmit';
 import { useState , useRef} from 'react';
 import {Register} from './components/register/register';
-import Chat from './chat';
+import { Login } from './components/register/login';
+import {Chat} from './components/chat/chat';
 //export var open = false;
 export function onDelete(id){
 
@@ -17,20 +19,23 @@ export function onDelete(id){
 }
 
 function App() {
-  let i = prompt("тип 1 або 2");
-  if(i === '1'){
+  //let i = prompt("тип 1 або 2 aбо 3");
+  //if(i === '1'){
   return(
      <p>
       
- 
- 
-    <Chat/>
+     <Routes>
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
   </p>
   
   
   );
   }
-  else{
+ /* else{
+    if(i === '2'){
     return(
       <p>
        
@@ -40,10 +45,21 @@ function App() {
    </p>
    
    
+   );}
+  
+  else{
+    return(
+      <p>
+       
+   <Login/>
+  
+    
+   </p>
+   
+   
    );
   }
-  }
-
-//export default  { deleteChange};
+  }}
+//export default  { deleteChange};*/
 export default App;
 //export const useMyContext = () => useContext(deleteChange);

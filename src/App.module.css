@@ -40,23 +40,22 @@
     transform: rotate(360deg);
   }
 }
-.textLable{
+/*.textLable{
 bottom: 30px;
-}
+}*/
 .form{
-  color: darkblue;
-  background-color:lightskyblue;
-  width: auto;
-  height: 500px;
+
+background-color:lightskyblue;
+width: auto;
+height: 500px;
 }
 .form-button-submit{
 width: auto;
 height: 200px;
 background-color: aqua;
 }
-.tableform{
-  
-width: 1000px;
-height: 1000px;
-background-color: black;
+.conteiner{
+max-width: 500px;
+max-height: 500px;
+color: black;
 }

@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.0",
     "http-server": "^14.1.1",
     "overlayscrollbars": "^2.3.2",
     "react": "^18.2.0",
@@ -21,7 +22,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "servero": "json-server -w src/serverJSON/users.json",
+    "server": "json-server -w src/serverJSON/chat_data.json"
   },
   "eslintConfig": {
     "extends": [

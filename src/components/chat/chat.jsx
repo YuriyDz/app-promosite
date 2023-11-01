@@ -6,11 +6,27 @@ import { ChatTable } from '../chatTable/chatTable';
 import {InterfaceTable}  from '../InputBotton/InputBotton';
 import { chatTable } from '../../chat_data';
 import { ButtonSubmit } from '../ButtonSubmit/butthonSubmit';
-import { useState , useRef} from 'react';
+import { useState} from 'react';
+import axios from "axios";
+import { json } from 'react-router-dom';
+//axios.defaults.baseURL = "http://localhost:3000";
 //import { OverlayScrollbars } from 'overlayscrollbars';
 export function Chat() {
-    
-    const[chatData,setChatData] = useState(chatTable);
+
+    const[chatData,setChatData] = useState(["nothing"]);
+    const url="http://localhost:3000/chatTable";
+  async function getmas(){
+    try{
+  const a =await axios.get(url);
+setChatData(a.data);
+}
+catch{
+  return;
+}}
+console.log(chatData[0]);
+if(chatData[0]==="nothing"){
+  getmas();
+}
    // const[modalOpen,setModalOpen] = useState(false);
     const[cid,setCid]=useState(-1);
     const[chatText,setChatText]=useState('');
@@ -19,6 +35,7 @@ export function Chat() {
     const[chatPiece,setChatPiece]= useState(0);
     let user = "quest";
     let range = 4;
+
   /*  OverlayScrollbars ( {  
       target : document . querySelector ( '#target' ) , 
       scrollbars : { 

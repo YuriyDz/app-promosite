@@ -1,9 +1,14 @@
 import { useState} from 'react';
 import { usersData, measeges_for_user} from '../../users';
 import "./regiater.css";
-    
+import axios from 'axios';
+import { Link, NavLink } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 //✅
- export function Register() {
+ export function Register({usersData,func}) {
+    console.log(usersData);
+    const navigate = useNavigate();
+   // usersData=usersData["usersData"];
     const[userNamea,setUserNamea]=useState('');
     const[email,setEmail]=useState('');
     const[password,setPassword]=useState('');
@@ -92,8 +97,19 @@ import "./regiater.css";
            }
            console.log(dm);
        if(confimereg == 4){
-            usersData[userNamea] = [email,password];
+           // usersData[userNamea] = [email,password];
+            const mas = {
+              "id":usersData[usersData.length-1]["id"]+1,
+              "name": userNamea,
+              "email": email,
+              "password": password
+
+            }
+            console.log(mas);
+             axios.post("http://localhost:3000/userData",mas);
             alert("Реєстрація пройшла успішно");
+            func();
+            navigate("/login", { replace: true });
        }
      }
      function correctAgainPassword(p,pc){
@@ -109,8 +125,9 @@ import "./regiater.css";
      function correctName (u){
         if(u === '') return '';
         let b = true;
-             for(let i in usersData){
-                 if(i === u){
+             for(let i of usersData){
+                console.log(i);
+                 if(i["name"] === u){
                     b = false;
                     break;
                  }

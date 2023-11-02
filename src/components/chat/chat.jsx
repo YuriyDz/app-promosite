@@ -9,8 +9,10 @@ import { ButtonSubmit } from '../ButtonSubmit/butthonSubmit';
 import { useState} from 'react';
 import axios from "axios";
 import { json } from 'react-router-dom';
+import { wait } from '@testing-library/user-event/dist/utils';
 //axios.defaults.baseURL = "http://localhost:3000";
 //import { OverlayScrollbars } from 'overlayscrollbars';
+/*
 export function Chat() {
 
     const[chatData,setChatData] = useState(["nothing"]);
@@ -23,9 +25,15 @@ setChatData(a.data);
 catch{
   return;
 }}
-console.log(chatData[0]);
+console.log(chatData);
 if(chatData[0]==="nothing"){
   getmas();
+}
+ function update(mas){
+  console.log(mas);
+ axios.post("http://localhost:3000/chatTable",JSON.stringify(mas));
+getmas();
+
 }
    // const[modalOpen,setModalOpen] = useState(false);
     const[cid,setCid]=useState(-1);
@@ -47,6 +55,7 @@ if(chatData[0]==="nothing"){
     //   V                            V   
      
       //___X___END___X___
+      /*
       const idSelect = (id) => {
         id = id + chatPiece;
         console.log(id,chatPiece,cid);
@@ -74,13 +83,14 @@ if(chatData[0]==="nothing"){
            setSend(false);
            break;
         case 2:
-           setChatData(chatData.filter(value => value !== chatData[cid]),);
-           if(cid > chatData.length-(range+1)){
+           const m = chatData.filter(value => value !== chatData[cid]);
+           if(cid > m.length-(range+1)){
             setChatPiece(chatPiece-1);
            }
            if(cid < range){
             setChatPiece(0);
            }
+           update(m);
            setCid(-1);  
            break;
         case 3:
@@ -100,22 +110,26 @@ if(chatData[0]==="nothing"){
     };
       
         const doSend = () => {
+          let m = [];
+          console.log(chatData);
           const pushMas=[user,chatText];
                if(send == false){
-                  setChatData(chatData.map(value => {
+                   m = chatData.map(value => {
                       if(value == chatData[cid]){
                         return pushMas;
                       }
                         return value;
-                  }),);
+                  });
                   setSend(true);
                }
                else{
                 
-                setChatData([...chatData, pushMas]);
+                m = [...chatData, pushMas];
                 toBotton(1);
                 
                }
+               console.log(m,"127");
+               update(m);
                setChatText(''); 
         };
         const handleEmailChange = (event) => {
@@ -170,7 +184,7 @@ if(chatData[0]==="nothing"){
         
       </box>
     );
-}
+}*/
 //
 //export default Chat;
 /*
@@ -182,3 +196,198 @@ if(chatData[0]==="nothing"){
                <button onClick={setSlapIndex(slapIndex+1)}></button>
                <button onClick={setSlapIndex(slapIndex-1)}></button>
               */
+               export function Chat({user}) {
+              // console.log(typeof(user));
+                const[chatData,setChatData] = useState(["nothing"]);
+                const url="http://localhost:3000/chatTable";
+              async function getmas(){
+                try{
+              const a = await axios.get(url);
+            setChatData(a.data);
+            }
+            catch{
+              console.error("Невдалось завантажити сторінку. Можливо у вас відсутнє підключення до інтернету");
+              return;
+            }}
+            console.log(chatData);
+            if(chatData[0]==="nothing"){
+              getmas();
+            }
+            async function update(mas){
+              console.log(mas);
+            await axios.post("http://localhost:3000/chatTable",mas);
+            getmas();
+            
+            }
+           async function changeText(mas){
+              await axios.patch("http://localhost:3000/chatTable/"+String(chatData[cid]["id"]),mas);
+              getmas();
+           }
+            async function deletRequest(){
+
+                await axios.delete("http://localhost:3000/chatTable/"+String(chatData[cid]["id"]));
+                 getmas();
+            }
+               // const[modalOpen,setModalOpen] = useState(false);
+                const[cid,setCid]=useState(-1);
+                const[chatText,setChatText]=useState('');
+                const[send,setSend]=useState(true);
+                const[isOwner,setIsOwner]=useState(false);
+                const[chatPiece,setChatPiece]= useState(0);
+                
+                let range = 4;
+            
+              /*  OverlayScrollbars ( {  
+                  target : document . querySelector ( '#target' ) , 
+                  scrollbars : { 
+                    slot : document . querySelector ( '#chatTable' ) . parentElement , 
+                  } , 
+                 } ,  { } ) ;*/
+                //Модальне вікно з пітвердженням
+                //___|___потребує вдосконалення___|___
+                //   V                            V   
+                 
+                  //___X___END___X___
+                  
+                  const idSelect = (id) => {
+                    id = id + chatPiece;
+                    console.log(id,chatPiece,cid);
+                    if(id == cid){
+                      setCid(-1);
+                      setSend(true);
+                    if(send == false){
+                      setChatText('');
+                        }
+                    }
+                    else{
+                        setCid(id);
+                        }
+                    if(chatData[id]["user"] == user && id != -1){
+                      setIsOwner(true);
+                    }
+                    else{
+                      setSend(true);
+                      setIsOwner(false);
+                    }
+                  };
+                  const deleteChange = (type) => {
+                switch(type){
+                    case 1:
+                       setSend(false);
+                       break;
+                    case 2:
+                       deletRequest();
+                       if(cid > chatData.length-(range+1)){
+                        setChatPiece(chatPiece-1);
+                       }
+                       if(cid < range){
+                        setChatPiece(0);
+                       }
+                       setCid(-1);  
+                       break;
+                    case 3:
+                       setCid(-1);
+                       setChatText('');
+                       setSend(true);
+                       break;    
+                    case 4:
+                       setChatText(chatData[cid]["text"]);
+                       break;
+                    }
+                
+                };
+                
+                function sendData(){
+                  addusers(chatData);
+                };
+                  
+                    const doSend = () => {
+                      let m = {};
+                      console.log(chatData);
+                      
+                           if(send == false){
+                             m = {
+                               "user": user,
+                               "text": chatText,
+                               "id": chatData[cid]["id"]
+                             };
+                              changeText(m);
+                              setSend(true);
+                           }
+                           else{
+                            if(chatData.length == 0){
+                              m = {
+                              "user": user,
+                              "text": chatText,
+                              "id": 1,
+                              };
+                            }
+                            else{
+                              m = {
+                               "user": user,                                        
+                               "text": chatText,
+                               "id": chatData[chatData.length-1]["id"]+1
+                              };
+                            }
+                            update(m);
+                            toBotton(1);
+                            
+                           }
+                           console.log(m,"127");
+                           update(m);
+                           setChatText(''); 
+                    };
+                    const handleEmailChange = (event) => {
+                        setChatText(event.target.value);
+                    };
+                   // console.log(modalOpen);
+                   function peice(){
+                      let newChat = [];
+             if(chatData.length < range){
+              return chatData;
+              
+             }
+             else{
+              newChat = chatData.slice(chatPiece,chatPiece+4);
+              return newChat;
+             }
+                   }
+                   
+                  function minusData(n){
+                    if(chatPiece+n > chatData.length - range || chatPiece+n < 0){
+                      return;          
+                    }
+                        setChatPiece(chatPiece+n);
+                      //  setCid(-1);
+                  }
+                  function toBotton(n){
+            
+                    
+                      if(chatData.length > range-1){
+                    setChatPiece(chatData.length -range+n);
+                  }}
+                return (
+                  <box>              
+                           <InterfaceTable  id = {cid} func = {deleteChange} userOwner={isOwner}></InterfaceTable>
+                           <box className='conteiner'>
+                           <ChatTable userOwner = {user} cid = {cid-chatPiece} func = {idSelect} chatTable={peice()} funcSeve={sendData}></ChatTable>
+                           </box>
+                           
+                           <box className='form1'>
+                           <ButtonSubmit isSend={send} doSend={doSend} ></ButtonSubmit> 
+                           <label>
+                            
+                           
+                            <input className ='textLable' type="chatText" value={chatText} onChange={handleEmailChange} />
+                            
+                           </label>
+                           <button className='button-slap' onClick={() => minusData(-1)}>^</button>
+                            <button className='button-slap' onClick={() => minusData(1)}>v</button>
+                            <button className='button-slap' onClick={() => toBotton(0)}>vv</button>
+                            
+                           </box>
+                    
+                  </box>
+                );
+            }
+            

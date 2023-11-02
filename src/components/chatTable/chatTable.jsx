@@ -20,14 +20,26 @@ export const needUnder = (text) => {
     return arrn;
     }
 };
+function conwertWithObjectToMas(obj){
+    let arr = [];
+    for(let j in obj){
+        let arrPush = [];
+for(let i in obj[j]){
+arrPush.push(obj[j][i]);
+}
+arr.push(arrPush);
+}
+return arr;
+}
 export const ChatTable = ({userOwner,cid,func,chatTable,funcSeve}) => {
-    const chatDataRenderer = chatTable.map((value,index) => {
+const mas = conwertWithObjectToMas(chatTable);
+    const chatDataRenderer = mas.map((value,index) => {
         if(cid == index){
             if(value[0] == userOwner){
                 return(
                     <p className='card1'>
                         <button className='button' onClick={() => func(index)}>
-                           <b className='user'>you</b>
+                           <b className='user'>{" "}you{" "}</b>
                            <p className='text'>{needUnder(value[1])}</p>
                         </button>
                     </p>
@@ -71,3 +83,5 @@ export const ChatTable = ({userOwner,cid,func,chatTable,funcSeve}) => {
 funcSeve();
 return chatDataRenderer;
 }
+
+    

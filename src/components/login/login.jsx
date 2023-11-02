@@ -1,10 +1,16 @@
 import { usersData } from "../../users";
 import { measeges_for_user } from "../../users";
 import { useState} from 'react';
+import axios from "axios";
 import "./login.css";
-export function Login() {
+import { useNavigate } from "react-router-dom";
+export const Login=({usersData,func})=> {
+   console.log(typeof(func));
+   //usersData = usersData["usersData"];
+   const navigate = useNavigate();
+    
     const[userNameEmail,setUserNameEmail]=useState('');
-   
+    console.log(usersData);
     const[password,setPassword]=useState('');
    
     const[a,setA]=useState(measeges_for_user[0]);
@@ -66,14 +72,17 @@ export function Login() {
            }
            
        if(confimereg == 2){
-            
+        window.localStorage.setItem('user', JSON.stringify(u));
             alert("Вхід виконаний успішно");
+            func();
+            
+            navigate("/", { replace: true });
        }
      }
      function correctName (u){
         if(u === '') return '';
         let b = true;
-             for(let i in usersData){
+            /* for(let i in usersData){
                  if(i === u || usersData[i][0] === u){
                     b = false;
                     break;
@@ -84,17 +93,31 @@ export function Login() {
              }
              else{
                 return 'uncorrect';
+             }*/
+             for(let i in usersData){
+                if(usersData[i]["name"]===u || usersData[i]["email"]===u){
+                    b=false;
+                    break;
+                }
              }
+             if(b == false){
+                return u;
+             }
+             else{
+                return 'uncorrect';
+             }
+        
      }
      function correctPasword(p){
         if(p === '') return '';
         let b = true;
-             for(let i in usersData){
-                 if(usersData[i][1] === p){
-                    b = false;
-                    break;
-                 }
-             }
+        for(let i in usersData){
+            if(usersData[i]["password"]===p){
+                b=false;
+                break;
+            }
+         }
+             
              if(b == false){
                 return p;
              }
@@ -123,7 +146,7 @@ return(
 </label>
 
     <p></p>
-<button className='button1' onClick={correct}>Підтвердити вхід</button>
+<button className='button1' onClick={correct} onSubmit={()=>func()}>Підтвердити вхід</button>
 </div>
 );
-}
+};

@@ -57,3 +57,6 @@ jobs:
         cd /home/ec2-user/app-promosite/
         pm2 start npm --name "app-promosite" -- start -- --port 3001
         '
+    
+    - name: Start jso server
+      run: npm run server  

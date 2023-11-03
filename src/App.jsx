@@ -1,7 +1,8 @@
 import { Routes, Route, Link } from "react-router-dom";
-/*import logo from './logo.svg';
-import css from './App.module.css';
-import { ChatTable } from './components/chatTable/chatTable';
+/*import logo from './logo.svg';*/
+import './App.module.css';
+import { SharedLayout } from "./components/Shayredlayout/shayredlayout.jsx";
+/*import { ChatTable } from './components/chatTable/chatTable';
 import modalWindow from './components/modalWindowInput/modalWindw';
 import {InterfaceTable}  from './components/InputBotton/InputBotton';
 import { render } from '@testing-library/react';
@@ -13,6 +14,7 @@ import { Login } from './components/login/login';
 import {Chat} from './components/chat/chat';
 import { useState } from "react";
 import axios from "axios";
+
 //export var open = false;
 export function onDelete(id){
 
@@ -41,7 +43,6 @@ function App() {
     JSON.parse(window.localStorage.getItem('user')) ?? []
     );
     const changeUser=()=>{
-       alert("gnbbbcb");
       return setUser(JSON.parse(window.localStorage.getItem('user')));
        
       
@@ -50,12 +51,11 @@ function App() {
 
   return(
      <p>
-    <p>Hello {user}</p>  
-  
-    <Link to="/chat">go to chat</Link>
-    <Link to="/register">register</Link>
-    <Link to="/login">login</Link>
+     
+    
+    
      <Routes>
+        <Route path="/" element={<SharedLayout user={user} />}/>
         <Route path="/chat" element={<Chat user={user} />} />
         <Route path="/login" element={<Login usersData={usersData} func={changeUser}/>} />
         <Route path="/register" element={<Register usersData = {usersData} func = {getmas}/>} />

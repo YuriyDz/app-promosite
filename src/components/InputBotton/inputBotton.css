@@ -1,3 +1,4 @@
+
 .buttonLock{
     margin-top: 10px;
     display: flex;
@@ -8,6 +9,13 @@ left: 480px;
 display: flex;
 background-color: rgba(0,0,0,0);
 color: gray;
+border: none;
+}
+.img{
+  width: 40px;
+flex-direction: column;
+height: 40px;
+
 }
 .buttonOk{
     margin-top: 10px;
@@ -17,14 +25,16 @@ flex-direction: column;
 height: 40px;
 left: 480px;
 display: flex;
+color: azure;
 background-color: rgba(0,0,0,0);
 font-weight: 800;
-color: black;
+
+
 border: none;
 }
 .form1{
   display: flex; 
-background-color:lightskyblue;
+background: linear-gradient(60deg,darkblue,orange,azure,white);
 width: auto;
 height: 50px;
 }

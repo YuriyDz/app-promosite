@@ -196,7 +196,13 @@ getmas();
                <button onClick={setSlapIndex(slapIndex+1)}></button>
                <button onClick={setSlapIndex(slapIndex-1)}></button>
               */
+             function rel(){
+              
+
+
+             }
                export function Chat({user}) {
+                
               // console.log(typeof(user));
                 const[chatData,setChatData] = useState(["nothing"]);
                 const url="http://localhost:3000/chatTable";

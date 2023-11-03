@@ -57,7 +57,7 @@ const mas = conwertWithObjectToMas(chatTable);
             }
         }
         else{
-            if(value[0] == userOwner){
+            if(value[0] === userOwner){
                 return(
                     <p className='card'>
                         <button className='button' onClick={() => func(index)}>

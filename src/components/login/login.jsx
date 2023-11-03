@@ -8,7 +8,7 @@ export const Login=({usersData,func})=> {
    console.log(typeof(func));
    //usersData = usersData["usersData"];
    const navigate = useNavigate();
-    
+  //  const[hidePassword,setHidePassword]=useState(true);
     const[userNameEmail,setUserNameEmail]=useState('');
     console.log(usersData);
     const[password,setPassword]=useState('');
@@ -16,7 +16,21 @@ export const Login=({usersData,func})=> {
     const[a,setA]=useState(measeges_for_user[0]);
     const[b,setB]=useState(measeges_for_user[8]);
    
-     
+   /*  const hide = () =>{
+        let b = true;
+        if(hidePassword==true){
+            b = false;
+        }
+        setHidePassword(b);
+     };
+     const returnPassword=(p)=>{
+        let pn = "";
+          for(let i=0;i<p.lenth;i++){
+                    pn = pn + "●";             
+
+          }
+          return pn;
+     };*/
    /* const handleEmailChange = (event) => {
         setEmail(event.form.valuea);jhhjhjhjhj
         setUserNamea(event.form.value);
@@ -150,3 +164,5 @@ return(
 </div>
 );
 };
+//hidePassword == false?password:returnPassword(password)
+//<button className="buttonHide" onClick={hide} ></button>

@@ -7,6 +7,10 @@
     font-size: 25px;
 
 }
+.textLable:hover{
+    background-color: azure;
+    
+    }
 .form{
       color: darkblue;
       background-color:lightskyblue;
@@ -28,6 +32,11 @@ height: 40px;
 color: black;
 border: none;
 }
+.button-slap:hover{
+    background-color: azure;
+    transform: scale(1.15);
+    
+    }
 .conteiner{
      
     max-width: 500px;

@@ -19,7 +19,12 @@ border: none;
     border: none;
 background-color: lightblue;
 height: auto;
+margin-left: 30px;
 width: 550px;
+}
+.card:hover{
+    animation-duration: 200ms;
+    transform: scale(1.035,1.15);
 }
 .text{
 color: black;
@@ -29,6 +34,7 @@ background-color: none;
 .user{
 position: center;    
 color: black;
+border-radius: 3px;
 background-color:aqua;
 height: 25px;
 width: auto;
@@ -42,11 +48,21 @@ font-weight: 800;
     background-color: lightgreen;
     height: auto;
     width: 550px;
+    margin-left: 30px;
 
+}
+.card1:hover{
+    animation-duration: 200ms;
+    transform: scale(1.035,1.15);
 }
 .card2{
     border: none;
 background-color: lightpink;
 height: auto;
 width: 550px;
+margin-left: 30px;
+}
+.card2:hover{
+    animation-duration: 200ms;
+    transform: scale(1.035,1.15);
 }

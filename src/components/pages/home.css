@@ -1,0 +1,83 @@
+.topTable{
+    
+    display: flex;
+    
+    height: 80px;
+   
+    background: linear-gradient(60deg,white,azure,orange,darkblue);
+    position: relative;
+   
+
+}
+.buttonsT{
+    
+    
+    
+display: flex;
+border-color: red;
+
+margin-left: 20px;
+margin-top: 20px;
+height: 40px;
+width: auto;
+text-align: center;
+background-color: white;
+
+}
+.buttonsT:hover{
+
+background-color: azure;
+
+}
+.homeButtons{ 
+    border-radius: 35px;
+    margin-top: 15px;
+    text-align:left;
+margin-left: 200px;
+height: auto;
+width: 800px;
+border: none;
+background: linear-gradient(60deg,darkblue,lightskyblue,lightcoral,orange );
+}
+.homeButtonsF{
+border-radius: 35px;
+margin-top: 100px;
+text-align:left;
+margin-left: 200px;
+height: auto;
+width: 800px;
+border-color: red;
+background: linear-gradient(90deg,white,azure,wheat );
+}
+.text{
+    margin-left: 25px;
+color: white;
+font-size: large;
+}
+.textF{
+    margin-left: 25px;
+    color: black;
+    font-size: large;
+}
+.text1{
+    
+   
+color: black;
+text-align: center;
+font-size: x-large;
+}
+.text2{
+    
+    margin-left: 25px;
+color: green;
+text-align: center;
+font-size: x-large;
+}
+.homeButtons:hover{
+
+transform: scale(1.005);
+}
+.homeButtonsF:hover{
+
+    transform: scale(1.005);
+    }

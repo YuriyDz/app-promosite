@@ -10,6 +10,7 @@ import { useState} from 'react';
 import axios from "axios";
 import { json } from 'react-router-dom';
 import { wait } from '@testing-library/user-event/dist/utils';
+import { Alert } from 'bootstrap';
 //axios.defaults.baseURL = "http://localhost:3000";
 //import { OverlayScrollbars } from 'overlayscrollbars';
 /*
@@ -201,18 +202,19 @@ getmas();
 
 
              }
-               export function Chat({user}) {
+               export function Chat({user,chatId}) {
                 
               // console.log(typeof(user));
                 const[chatData,setChatData] = useState(["nothing"]);
-                const url="http://localhost:3000/chatTable";
+                const url="http://localhost:3000/"+String(chatId)+"/";
               async function getmas(){
                 try{
               const a = await axios.get(url);
-            setChatData(a.data);
+              console.log(a.data);
+            setChatData(a.data["chatTablre"]);
             }
             catch{
-              console.error("Невдалось завантажити сторінку. Можливо у вас відсутнє підключення до інтернету");
+              alert("Невдалось завантажити сторінку. Можливо у вас відсутнє підключення до інтернету");
               return;
             }}
             console.log(chatData);
@@ -221,17 +223,17 @@ getmas();
             }
             async function update(mas){
               console.log(mas);
-            await axios.post("http://localhost:3000/chatTable",mas);
+            await axios.post(url,mas);
             getmas();
             
             }
            async function changeText(mas){
-              await axios.patch("http://localhost:3000/chatTable/"+String(chatData[cid]["id"]),mas);
+              await axios.patch(url+String(chatData[cid]["id"]),mas);
               getmas();
            }
             async function deletRequest(){
 
-                await axios.delete("http://localhost:3000/chatTable/"+String(chatData[cid]["id"]));
+                await axios.delete(url+String(chatData[cid]["id"]));
                  getmas();
             }
                // const[modalOpen,setModalOpen] = useState(false);

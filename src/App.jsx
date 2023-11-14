@@ -1,5 +1,6 @@
 import { Routes, Route, Link } from "react-router-dom";
 /*import logo from './logo.svg';*/
+import {UserSettingsPage} from "./components/settings/setings.jsx";
 import './App.module.css';
 import { SharedLayout } from "./components/Shayredlayout/shayredlayout.jsx";
 /*import { ChatTable } from './components/chatTable/chatTable';
@@ -14,7 +15,7 @@ import { Login } from './components/login/login';
 import {Chat} from './components/chat/chat';
 import { useState } from "react";
 import axios from "axios";
-
+import { Home }  from './components/pages/home';
 //export var open = false;
 export function onDelete(id){
 
@@ -24,6 +25,7 @@ export function onDelete(id){
 
 function App() {
   const[usersData,setUsersData]=useState('nothing');
+  const[id,setId]=useState(-1);
     async function getmas(){
         try{
       const a = await axios.get("http://localhost:3000/userData");
@@ -39,6 +41,11 @@ function App() {
     }
   //let i = prompt("тип 1 або 2 aбо 3");
   //if(i === '1'){
+    const getId =(id)=>{
+setId(
+JSON.parse(window.localStorage.getItem('userid')) ?? []
+);
+    };
     const[user,setUser]=useState(
     JSON.parse(window.localStorage.getItem('user')) ?? []
     );
@@ -55,10 +62,12 @@ function App() {
     
     
      <Routes>
-        <Route path="/" element={<SharedLayout user={user} />}/>
-        <Route path="/chat" element={<Chat user={user} />} />
+        <Route path="/home" element={<SharedLayout user={user} />}/>
+        <Route path="/" element={<Home func={getId} user={user}/>} />
+        <Route path="/chat" element={<Chat user={user} chatId={id} />} />
         <Route path="/login" element={<Login usersData={usersData} func={changeUser}/>} />
         <Route path="/register" element={<Register usersData = {usersData} func = {getmas}/>} />
+        <Route path="/userSettings" element={<UserSettingsPage userData = {usersData} user={Number(JSON.parse(window.localStorage.getItem('userid')) ?? [])}/>} />
       </Routes>
   </p>
   

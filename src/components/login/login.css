@@ -33,7 +33,7 @@ color: white;
 .button1:hover{
     animation-duration: 200ms;
     transform: scale(1.25);
-    background-color: darkgreen;
+    
 }
 
 

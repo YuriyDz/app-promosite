@@ -86,6 +86,7 @@ export const Login=({usersData,func})=> {
            }
            
        if(confimereg == 2){
+
         window.localStorage.setItem('user', JSON.stringify(u));
             alert("Вхід виконаний успішно");
             func();
@@ -111,7 +112,10 @@ export const Login=({usersData,func})=> {
              for(let i in usersData){
                 if(usersData[i]["name"]===u || usersData[i]["email"]===u){
                     b=false;
+                    window.localStorage.setItem('userid', JSON.stringify(i));
+                    func(i);
                     break;
+                    
                 }
              }
              if(b == false){
@@ -126,7 +130,7 @@ export const Login=({usersData,func})=> {
         if(p === '') return '';
         let b = true;
         for(let i in usersData){
-            if(usersData[i]["password"]===p){
+            if(usersData[i]["password"]===p && (usersData[i]['name'] === userNameEmail || usersData[i]['email'] === userNameEmail )){
                 b=false;
                 break;
             }

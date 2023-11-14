@@ -1,0 +1,44 @@
+.formMain{
+
+    display: flex;
+    
+    height: 60px;
+   
+    background: linear-gradient(60deg,white,azure,orange,darkblue);
+    position: relative;
+    
+
+}
+.Settingtables{
+    width: auto;
+    height: auto;
+    background-color: lightskyblue;
+    
+    
+}
+.tableDefault{
+    margin-left: 50px;
+    background-color: lightgray;
+}
+.table{
+    
+    margin-left: 50px;
+    background-color: white;
+}
+.texterrors{
+    color: red;
+}
+.textmoney{
+    font-size: xx-large;
+    color: green;
+    margin-left: auto;
+    margin-right: 10px;
+}
+.textuser{
+    font-size: xx-large;
+    margin-left: 10px;
+}
+.ticket{
+  width: 1000px;
+  height: 1000px;
+}

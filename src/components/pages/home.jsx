@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Items } from './homeMap';
 import './home.css';
-export const Home = ({func,user}) => {
+export const Home = ({funcC,func,user,userTickets,funcp}) => {
     let date = new Date();
     const navigate = useNavigate();
 const[info,setInfo]= useState(['nothing']);
@@ -35,11 +35,49 @@ case 'u':
     break;
 }
  }  
- function isReady(){
-
-
-
-
+ function isReady(id,name,price){
+   // alert(id);
+    window.localStorage.setItem('eventid', JSON.stringify(id));
+    let ut;
+    let money;
+for(let  i in userTickets){
+    if(i === "mass of ticket"){
+        ut = userTickets[i];
+        }
+    if(i === "money"){
+        money = userTickets[i];
+    }
+}
+for(let i of ut){
+    if(i === name){
+        navigate("/videoPage", { replace: true });
+        return;
+    }
+}
+//alert(money+" "+id);
+if(money - price >=0){
+    
+    
+    let obj = userTickets;
+    let idu;
+    for(let i in obj){
+        if(i === 'id'){
+            idu = obj[i];
+        }
+        if(i === 'mass of ticket'){
+            obj[i].push(name);
+        }
+        if(i === 'money'){
+            obj[i]  = money - price;
+        }
+    }
+    funcC(obj,idu);
+    funcp();
+    navigate("/videoPage", { replace: true });
+    
+    return;
+}
+alert("У вас недостатньо коштів");
  } 
 function nowOrFuture(datenow,dateevent){
     
@@ -86,10 +124,17 @@ return (
                 
                    <>
                    {info.map(function(elements){
+                    let idm;
+                    for(let i in elements){
+                        
+                        idm = elements[i];
+                        break;
+                    }
+                    
                     let dh = String(elements.dateToOpen).split(' ');
                         if(nowOrFuture(date.getDate()+"."+String(Number(date.getMonth())+1)+"."+date.getFullYear()+" "+date.getHours()+':'+date.getMinutes(),String(elements.dateToOpen))===true){
                       return(
-                         <button className='homeButtons'>
+                         <button className='homeButtons' onClick={() =>isReady(idm,elements.name,elements.ticketPrice)}>
                          <p className='text'>{elements.name}</p>
                          <p className='text'>Час: {dh[1]}</p>
                          <p className='text'>Місце: {elements.place}</p>
@@ -99,7 +144,7 @@ return (
                          );}
                          else{
                             return(
-                                <button className='homeButtonsF'>
+                                <button className='homeButtonsF' onClick={()=>isReady(idm,elements.name,elements.ticketPrice)}>
                                 <p className='textF'>{elements.name}</p>
                                 <p className='textF'>Час: {dh[1]}</p>
                                 <p className='textF'>Місце: {elements.place}</p>

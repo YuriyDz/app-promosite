@@ -16,6 +16,7 @@ import {Chat} from './components/chat/chat';
 import { useState } from "react";
 import axios from "axios";
 import { Home }  from './components/pages/home';
+import { PageVideo } from "./components/pageWithVideo/pageWithVideo.jsx";
 //export var open = false;
 export function onDelete(id){
 
@@ -26,6 +27,7 @@ export function onDelete(id){
 function App() {
   const[usersData,setUsersData]=useState('nothing');
   const[id,setId]=useState(-1);
+  const[idp,setIdp]=useState(-1);
     async function getmas(){
         try{
       const a = await axios.get("http://localhost:3000/userData");
@@ -39,6 +41,7 @@ function App() {
     if(usersData==="nothing"){
       getmas();
     }
+  
   //let i = prompt("тип 1 або 2 aбо 3");
   //if(i === '1'){
     const getId =(id)=>{
@@ -55,7 +58,18 @@ JSON.parse(window.localStorage.getItem('userid')) ?? []
       
        
     };
-
+    const getIdp =()=>{
+      setIdp(
+      JSON.parse(window.localStorage.getItem('eventid')) ?? []
+      );
+          };
+          async function updateUserData(mas,idu){
+            alert(idu);
+           // console.log('flfdld'+" "+JSON.parse(window.localStorage.getItem('userid')) ?? []);
+            console.log(mas);
+            await axios.patch("http://localhost:3000/userData/"+String(idu),mas);
+            getmas();
+         }
   return(
      <p>
      
@@ -63,11 +77,12 @@ JSON.parse(window.localStorage.getItem('userid')) ?? []
     
      <Routes>
         <Route path="/home" element={<SharedLayout user={user} />}/>
-        <Route path="/" element={<Home func={getId} user={user}/>} />
+        <Route path="/" element={<Home funcC={updateUserData} funcU={getmas} func={getId} user={user} userTickets={usersData[Number(JSON.parse(window.localStorage.getItem('userid')) ?? [])]} funcp={getIdp}/>} />
         <Route path="/chat" element={<Chat user={user} chatId={id} />} />
         <Route path="/login" element={<Login usersData={usersData} func={changeUser}/>} />
         <Route path="/register" element={<Register usersData = {usersData} func = {getmas}/>} />
-        <Route path="/userSettings" element={<UserSettingsPage userData = {usersData} user={Number(JSON.parse(window.localStorage.getItem('userid')) ?? [])}/>} />
+        <Route path="/userSettings" element={<UserSettingsPage funcC={updateUserData} funcU={getmas} userData = {usersData} user={Number(JSON.parse(window.localStorage.getItem('userid')) ?? [])}/>} />
+        <Route path="/videoPage" element={<PageVideo user={user} chatId={id} eventId={idp}/>} />
       </Routes>
   </p>
   

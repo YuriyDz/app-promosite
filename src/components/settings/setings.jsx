@@ -252,7 +252,7 @@ return(
     import './settings.css';
     import React, { useState } from 'react';
     import axios from "axios";
-    export function UserSettingsPage({userData,user}) {
+    export function UserSettingsPage({funcC,userData,user}) {
       let mask = [];
       for(let i in userData[user]){
          console.log(userData[user][i],i,typeof(i));
@@ -402,7 +402,19 @@ let user1 = userData[user];
   }
   setMessageOfMistakes(message);
   if(message.length == 0){
-  alert(birthdate);
+
+    let obj = {
+      "id": user1["id"],
+      "name": name,
+      "email": email,
+      "password": password,
+      "mass of ticket": user1['mass of ticket'],
+      "phone": phone,
+      "adres": address,
+      "bd": birthdate,
+      "money": user1['money']  
+    }
+  funcC(obj,user1["id"]);
 
   }
 
@@ -455,7 +467,7 @@ let user1 = userData[user];
           <form onSubmit={handleSubmit} className='Settingtables'>
             <div>
                 
-              <label htmlFor="name">Name:   </label>
+              <label htmlFor="name"> Name: </label>
               <input
               className={(name === mask[1])?'tableDefault':'table'} 
                 type="text"
@@ -463,10 +475,11 @@ let user1 = userData[user];
                 value={name}
                 onChange={handleNameChange}
                 />
-                <button onClick={setDefaultName}>Default</button>
+                <button className='buttonD' onClick={setDefaultName}>Default</button>
             </div>
             <div>
-              <label htmlFor="email">Email:   </label>
+            <nobr className='textLabletext'> Email:</nobr>
+              <label htmlFor="email">  </label>
               <input
               className={(email === mask[2])?'tableDefault':'table'} 
                 type="email"
@@ -474,7 +487,7 @@ let user1 = userData[user];
                 value={email}
                 onChange={handleEmailChange}
               />
-              <button onClick={setDefaultEmail}>Default</button>
+              <button className='buttonD' onClick={setDefaultEmail}>Default</button>
             </div>
             <div>
               <label htmlFor="password">Password:</label>
@@ -485,7 +498,7 @@ let user1 = userData[user];
                 value={password}
                 onChange={handlePasswordChange}
                 />
-                <button onClick={setDefaultPasword}>Default</button>
+                <button className='buttonD' onClick={setDefaultPasword}>Default</button>
              </div>
               <div>
               <label htmlFor="password">Correct password:</label>
@@ -506,7 +519,7 @@ let user1 = userData[user];
                 value={birthdate}
                 onChange={handleBirthdateChange}
               />
-              <button onClick={setDefaultBirthday}>Default</button>
+              <button className='buttonD' onClick={setDefaultBirthday}>Default</button>
             </div>
             <div>
               <label htmlFor="address">Address: </label>
@@ -517,7 +530,7 @@ let user1 = userData[user];
                 value={address}
                 onChange={handleAddressChange}
               />
-              <button onClick={setDefaultAdress}>Default</button>
+              <button className='buttonD' onClick={setDefaultAdress}>Default</button>
             </div>
             <div>
              
@@ -529,7 +542,7 @@ let user1 = userData[user];
                 value={phone}
                 onChange={handlePhoneChange}
               />
-              <button onClick={setDefaultPhone}>Default</button>
+              <button className='buttonD' onClick={setDefaultPhone}>Default</button>
             </div>
             <div>
              
@@ -541,13 +554,18 @@ let user1 = userData[user];
                     }
                 </div>
                 </div>
-            <button type="submit" onClick={submitCorrectChange}>Save Changes</button>
+            <button className='buttonSubmitChanges' type="submit" onClick={submitCorrectChange}>Save Changes</button>
             <div>
+              <p></p>
                     {
                   
-                    a.map(function(d){
-                      return <p>{d}</p>
-                    })
+                    a.map(function(item){
+                      return(<li className='ticket'>
+                        <li>Ticket for:</li>
+                        <b>{item}</b>
+                      
+                      </li>
+                    );})
                     }
                 </div>
             <div>

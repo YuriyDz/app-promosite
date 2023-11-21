@@ -26,12 +26,14 @@ background: linear-gradient(60deg,darkblue,orange,azure,white);
 height: 40px;
 width:  120px;
 background-color: green;
+transition-property: transform;
+animation-duration: 2000ms;
 color: white;
 
 
 }
 .button1:hover{
-    animation-duration: 200ms;
+    
     transform: scale(1.25);
     
 }

@@ -1,0 +1,52 @@
+.bg{
+    margin-top: 20px;
+width: auto;
+height: auto;
+padding: 10px 10px 10px 10px;
+
+background:linear-gradient(60deg,white,azure,orange,darkblue);
+}
+.chatbg{
+    margin-top: 20px;
+}
+.box_with_gamers{
+    width: auto;
+    height: auto;
+    display: flex;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: azure;
+    border-radius: 25px;
+}
+.ct{
+    color: darkblue;
+    margin-left:10px;
+    font-weight: 550;
+}
+.ct1{
+    margin-left: 10px;
+    font-weight: 600;
+}
+.image{
+    justify-content: center;
+    margin-left: 10px;
+}
+.buttonVP{
+   margin-left: 20px;
+    width: 250px;
+    border: none;
+    height: auto;
+    font-size: x-large;
+    color: white;
+    background-color: lightcoral;
+    transition-property: background-color;
+    transition-duration: 1000ms;
+}
+.buttonVP:hover{
+    background-color: red;
+}
+.divForBottons{
+    display: flex;
+    justify-content: center;
+}

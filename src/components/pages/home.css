@@ -1,9 +1,9 @@
 .topTable{
     
-    display: flex;
+    
     
     height: 80px;
-   
+       
     background: linear-gradient(60deg,white,azure,orange,darkblue);
     position: relative;
    
@@ -13,11 +13,10 @@
     
     
     
-display: flex;
-border-color: red;
 
-margin-left: 20px;
-margin-top: 20px;
+border-color: red;
+margin-left: auto;
+
 height: 40px;
 width: auto;
 text-align: center;

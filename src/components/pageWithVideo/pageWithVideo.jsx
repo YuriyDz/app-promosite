@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import io from 'socket.io-client';
+//import io from 'socket.io-client';
 import './pageWithVideo.css';
 import { Chat } from "../chat/chat";
 //import { Socket } from "dgram";

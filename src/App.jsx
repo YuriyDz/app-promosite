@@ -17,7 +17,7 @@ import { useState, useRef } from "react";
 import axios from "axios";
 import { Home }  from './components/pages/home';
 import { PageVideo } from "./components/pageWithVideo/pageWithVideo.jsx";
-import io from 'socket.io-client';
+//import io from 'socket.io-client';
 //export var open = false;
 export function onDelete(id){
 

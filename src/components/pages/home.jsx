@@ -31,11 +31,20 @@ case 'r':
     navigate("/register", { replace: true });
     break;
 case 'u':
+    if(user === 'quest'){
+        alert("Ввійдіть в свій аккаунт або створіть його");
+    }
+    else{
     navigate("/userSettings",{replace: true});
+    }
     break;
 }
  }  
  function isReady(id,name,price){
+    if(user === 'quest'){
+        alert("Ввійдіть в свій аккаунт або створіть його");
+        return; 
+    }
    // alert(id);
     window.localStorage.setItem('eventid', JSON.stringify(id));
     let ut;
@@ -109,6 +118,7 @@ return (
 <button className='buttonsT' onClick={()=>next('r')}><b className='text1'>Regiser</b></button>
 <button className='buttonsT' onClick={()=>next('l')}><b className='text1'>Login</b></button>
 <button className='buttonsT' onClick={()=>next('u')}><b className='text1'>{user}</b></button>
+<b className='MP'>Main page</b>
 </div>
 <header class="header">
 

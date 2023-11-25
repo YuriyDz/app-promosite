@@ -6,25 +6,28 @@
        
     background: linear-gradient(60deg,white,azure,orange,darkblue);
     position: relative;
+    
    
 
 }
 .buttonsT{
     
     
-    
+    margin-top: 20px;
 
 border-color: red;
-margin-left: auto;
-
+border-width: 3px;
+margin-left: 20px;
+margin-right: auto;
 height: 40px;
 width: auto;
 text-align: center;
 background-color: white;
+transition: all .2s ease-in-out;
 
 }
 .buttonsT:hover{
-
+border-width: 6px;
 background-color: azure;
 
 }
@@ -36,6 +39,7 @@ margin-left: 200px;
 height: auto;
 width: 800px;
 border: none;
+transition: all .2s ease-in-out;
 background: linear-gradient(60deg,darkblue,lightskyblue,lightcoral,orange );
 }
 .homeButtonsF{
@@ -46,6 +50,7 @@ margin-left: 200px;
 height: auto;
 width: 800px;
 border-color: red;
+transition: all .2s ease-in-out;
 background: linear-gradient(90deg,white,azure,wheat );
 }
 .text{
@@ -74,9 +79,16 @@ font-size: x-large;
 }
 .homeButtons:hover{
 
-transform: scale(1.005);
+transform: scale(1.2);
 }
 .homeButtonsF:hover{
 
-    transform: scale(1.005);
+    transform: scale(1.2);
     }
+.MP{
+    
+   
+    font-size: xx-large;
+    text-align: right;
+    margin-left: 30px;
+}

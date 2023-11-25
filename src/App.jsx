@@ -13,10 +13,11 @@ import { useState , useRef} from 'react';*/
 import {Register} from './components/register/register';
 import { Login } from './components/login/login';
 import {Chat} from './components/chat/chat';
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import { Home }  from './components/pages/home';
 import { PageVideo } from "./components/pageWithVideo/pageWithVideo.jsx";
+import io from 'socket.io-client';
 //export var open = false;
 export function onDelete(id){
 
@@ -29,6 +30,7 @@ function App() {
   const[id,setId]=useState(-1);
   const[idp,setIdp]=useState(-1);
     async function getmas(){
+     // alert("tggggg");
         try{
       const a = await axios.get("http://localhost:3000/userData");
     setUsersData(a.data);
@@ -44,7 +46,7 @@ function App() {
   
   //let i = prompt("тип 1 або 2 aбо 3");
   //if(i === '1'){
-    const getId =(id)=>{
+    const getId =()=>{
 setId(
 JSON.parse(window.localStorage.getItem('userid')) ?? []
 );
@@ -81,7 +83,7 @@ JSON.parse(window.localStorage.getItem('userid')) ?? []
         <Route path="/chat" element={<Chat user={user} chatId={id} />} />
         <Route path="/login" element={<Login usersData={usersData} func={changeUser}/>} />
         <Route path="/register" element={<Register usersData = {usersData} func = {getmas}/>} />
-        <Route path="/userSettings" element={<UserSettingsPage funcC={updateUserData} funcU={getmas} userData = {usersData} user={Number(JSON.parse(window.localStorage.getItem('userid')) ?? [])}/>} />
+        <Route path="/userSettings" element={<UserSettingsPage updateUD={getmas} func={changeUser} funcC={updateUserData} funcU={getmas} userData = {usersData} user={Number(JSON.parse(window.localStorage.getItem('userid')) ?? [])}/>} />
         <Route path="/videoPage" element={<PageVideo user={user} chatId={id} eventId={idp}/>} />
       </Routes>
   </p>

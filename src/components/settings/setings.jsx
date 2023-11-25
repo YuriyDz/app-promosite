@@ -251,9 +251,11 @@ return(
 */
     import './settings.css';
     import React, { useState } from 'react';
+    import { useNavigate } from "react-router-dom";
     import axios from "axios";
-    export function UserSettingsPage({funcC,userData,user}) {
+    export function UserSettingsPage({updateUD,func,funcC,userData,user}) {
       let mask = [];
+      const navigate = useNavigate();
       for(let i in userData[user]){
          console.log(userData[user][i],i,typeof(i));
          mask.push(userData[user][i]);
@@ -296,7 +298,21 @@ let user1 = userData[user];
       };
     
       const handleAccountDeletion = () => {
-        // Логіка для видалення акаунта
+         let submitPassword = prompt("Ви дійсно хочете видалити свій аккаунт, якщо так то введіть свій пароль");
+         if(submitPassword === user1['password']){
+          axios.delete("http://localhost:3000/userData/"+String(user1['id']));
+          updateUD();
+          return handleOutWithAccount();
+         }
+         return;
+           // Логіка для видалення акаунта
+      };
+      const handleOutWithAccount = () => {
+        window.localStorage.setItem('userid', JSON.stringify(-1));
+        window.localStorage.setItem('user', JSON.stringify("quest"));
+        func();
+        navigate("/", { replace: true });
+
       };
     
       const handleBirthdateChange = (e) => {
@@ -460,14 +476,17 @@ let user1 = userData[user];
     a.push(mask[4][j]);
   }
   //console.log(mask[4]);
+  const backToMainPage=()=>{
+    navigate("/", { replace: true });
+  }
   console.log(mask[7]+" "+birthdate);
       return (
         <div>
-            <div className='formMain'><b className='textuser'>{mask[1]}</b><b className='textmoney'>{mask[8]}$</b></div>
+            <div className='formMain'><b className='textuser'>{mask[1]}</b><button className='buttonBack' onClick={backToMainPage}>Back to main page</button><b className='textmoney'>{mask[8]}$</b></div>
           <form onSubmit={handleSubmit} className='Settingtables'>
             <div>
                 
-              <label htmlFor="name"> Name: </label>
+              <label htmlFor="name"> ___Name:____________</label>
               <input
               className={(name === mask[1])?'tableDefault':'table'} 
                 type="text"
@@ -478,7 +497,7 @@ let user1 = userData[user];
                 <button className='buttonD' onClick={setDefaultName}>Default</button>
             </div>
             <div>
-            <nobr className='textLabletext'> Email:</nobr>
+            <nobr className='textLabletext'> ___Email:____________</nobr>
               <label htmlFor="email">  </label>
               <input
               className={(email === mask[2])?'tableDefault':'table'} 
@@ -490,7 +509,7 @@ let user1 = userData[user];
               <button className='buttonD' onClick={setDefaultEmail}>Default</button>
             </div>
             <div>
-              <label htmlFor="password">Password:</label>
+              <label htmlFor="password">___Password:________</label>
               <input
               className={(password === mask[3])?'tableDefault':'table'} 
                 type="password"
@@ -501,7 +520,7 @@ let user1 = userData[user];
                 <button className='buttonD' onClick={setDefaultPasword}>Default</button>
              </div>
               <div>
-              <label htmlFor="password">Correct password:</label>
+              <label htmlFor="password">___Correct password:</label>
               <input
               className={(password === mask[3])?'tableDefault':'table'} 
                 type="password"
@@ -511,7 +530,7 @@ let user1 = userData[user];
                 />
              </div>
             <div>
-              <label htmlFor="birthdate">Birthdate:</label>
+              <label htmlFor="birthdate">___Birthdate:________</label>
               <input
               className={(birthdate === mask[7])?'tableDefault':'table'} 
                 type="date"
@@ -522,7 +541,7 @@ let user1 = userData[user];
               <button className='buttonD' onClick={setDefaultBirthday}>Default</button>
             </div>
             <div>
-              <label htmlFor="address">Address: </label>
+              <label htmlFor="address">___Address:_________</label>
               <input
               className={(address === mask[6])?'tableDefault':'table'} 
                 type="text"
@@ -534,7 +553,7 @@ let user1 = userData[user];
             </div>
             <div>
              
-              <label htmlFor="phone">Phone:</label>
+              <label htmlFor="phone">___Phone:___________</label>
               <input
               className={(phone === mask[5])?'tableDefault':'table'} 
                 type="tel"
@@ -554,17 +573,20 @@ let user1 = userData[user];
                     }
                 </div>
                 </div>
+                <div className='buttondiv'>
             <button className='buttonSubmitChanges' type="submit" onClick={submitCorrectChange}>Save Changes</button>
+            </div>
             <div>
               <p></p>
                     {
                   
                     a.map(function(item){
-                      return(<li className='ticket'>
-                        <li>Ticket for:</li>
-                        <b>{item}</b>
+                      return(<div className='ticket'>                                    
+                       
+                      <li className='ticketText'>Ticket for:</li>
+                        <b className='ticketText'>{item}</b>
                       
-                      </li>
+                      </div>
                     );})
                     }
                 </div>
@@ -590,8 +612,10 @@ let user1 = userData[user];
                />
                <button type="button" onClick={handleWithdrawalSubmit}>Withdraw</button>
             </div>
-            
-            <button type="button" onClick={handleAccountDeletion}>Delete Account</button>
+            <div className='buttondiv'>
+            <button className='buttonSubmitChanges' type="button" onClick={handleOutWithAccount}>Out With Account</button>
+            <button className='buttonSubmitChanges' type="button" onClick={handleAccountDeletion}>Delete Account</button>
+            </div>
             </div>
           </form>
         </div>

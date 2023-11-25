@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import io from 'socket.io-client';
 import './pageWithVideo.css';
 import { Chat } from "../chat/chat";
+//import { Socket } from "dgram";
 export function PageVideo({user,chatId,eventId}){
+  //const localVideoRef = useRef(null);
+ // const remoteVideoRef = useRef(null);
     eventId = JSON.parse(window.localStorage.getItem('eventid')) ?? [];
     const[buttonPush,setButtonPush]=useState(-1);
     const[info,setInfo]= useState(['nothing']);
+    //const[socket]= useState(()=>io('http://localhost:3002'));
+    /*const pc = useRef(new RTCPeerConnection(null));
+    useEffect(()=>{
+
+
+
+    });*/
 async function getmas(){
     try{
   const a = await axios.get("http://localhost:3000/Events/"+String(eventId));
@@ -34,11 +45,20 @@ if(info[0]==="nothing"){
  else{
    setButtonPush(1);
  }
-  }
+  }/*
+  const createVideo = async ()=>{
+     const call = await pc.curent.createVideo();
+     await pc.curent.setLocalDescription(call);
+     socket.emit('call',call);
+
+
+  }*/
+  //<video ref = {localVideoRef}>autoPlay Mute</video>
   console.log(info["gamers"]);
   let mas = info["gamers"];
     if(buttonPush == 1){
 return(<div>
+ 
     <div className="divForBottons">
     <button className="buttonVP" onClick={outChat}>To chat</button>
         <button className="buttonVP" onClick={outDetails}>To datails</button>
@@ -48,7 +68,7 @@ return(<div>
 return(
 <div className="box_with_gamers">
 <div className="image"><img src = {elements.image}></img>
-<li>{elements.name}</li></div>
+<li className="userText">{elements.name}</li></div>
 
     <div>
     <li className="ct1">Gamer name</li>

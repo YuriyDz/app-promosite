@@ -96,7 +96,7 @@ return(
   <div  >
     <div>
       <video id="vid"  width={size[0]} height={size[1]} >
-        <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" type="video/mp4"></source>
+        <source src={null} type="video/mp4"></source>
       </video>
       
    

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import {VideoBlock}  from "../ModuleWithVideo/video";
 //import io from 'socket.io-client';
 import './pageWithVideo.css';
 import { Chat } from "../chat/chat";
@@ -54,11 +55,12 @@ if(info[0]==="nothing"){
 
   }*/
   //<video ref = {localVideoRef}>autoPlay Mute</video>
-  console.log(info["gamers"]);
-  let mas = info["gamers"];
+ // console.log(info["gamers"]);
+  //let mas = info["gamers"];
     if(buttonPush == 1){
-return(<div>
- 
+return(
+<div>
+<VideoBlock/>
     <div className="divForBottons">
     <button className="buttonVP" onClick={outChat}>To chat</button>
         <button className="buttonVP" onClick={outDetails}>To datails</button>
@@ -91,7 +93,9 @@ return(
     }
     else{
     if(buttonPush == 2){
-        return(<div><div className="divForBottons">
+        return(<div>
+          <VideoBlock/>
+          <div className="divForBottons">
           <button className="buttonVP" onClick={outChat}>To chat</button>
         <button className="buttonVP" onClick={outDetails}>To datails</button>
         </div>
@@ -102,9 +106,14 @@ return(
         );
     }
 else{
-    return(<div className="divForBottons">
+    return(
+      <div>
+        <VideoBlock/>
+    <div className="divForBottons">
+      
         <button className="buttonVP" onClick={outChat}>To chat</button>
         <button className="buttonVP" onClick={outDetails}>To datails</button>
+    </div>
     </div>);
 
 }

@@ -47,10 +47,14 @@ background:linear-gradient(60deg,white,azure,orange,darkblue);
     background-color: red;
 }
 .divForBottons{
+    margin-top: 20px;
     display: flex;
     justify-content: center;
 }
 .userText{
     text-align: center;
     font-weight: 800;
+}
+.videopos{
+    justify-content: center;
 }

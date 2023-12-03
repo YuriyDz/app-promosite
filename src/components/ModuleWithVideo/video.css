@@ -1,0 +1,59 @@
+.boxMain{
+height: 500px;
+width: 1000px;
+background-color: black;
+}
+
+.boxChange{
+    display: flex;
+   background: linear-gradient(60deg,darkblue,orange,azure,white);
+    
+    margin-left: 55px;
+    
+    width: 890px;
+    height: 25px;
+  
+
+  /*transform: translatey(100%);
+  transition: transform 250ms ease-in-out;
+*/
+
+}
+.buttonChange{
+    width: 25px;
+    background-color: white;
+    border-radius: 30px;
+    transition: all .5s ease-in-out;
+
+
+}
+.buttonChangeClicked{
+    width: 25px;
+    border-radius: 30px;
+    background-color: red;
+}
+.buttonChange:hover{
+    background-color: red;
+}
+.textsec{
+    margin-left: 10px;
+    width: 80px;
+    color: red;
+}
+.boxChangef{
+    position:absolute;
+    display: flex;
+    background: rgba(0, 0, 0, 0);
+    width: auto;
+    height: 25px;
+}
+.videof{
+    position: relative;
+}
+.sider{
+   accent-color: red;
+   width: 600px;
+}
+.videopos{
+    justify-content: center;
+}

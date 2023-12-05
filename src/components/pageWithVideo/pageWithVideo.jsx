@@ -11,6 +11,7 @@ export function PageVideo({user,chatId,eventId}){
     eventId = JSON.parse(window.localStorage.getItem('eventid')) ?? [];
     const[buttonPush,setButtonPush]=useState(-1);
     const[info,setInfo]= useState(['nothing']);
+    const[onlyVideo,setOnlyVideo]=useState(false);
     //const[socket]= useState(()=>io('http://localhost:3002'));
     /*const pc = useRef(new RTCPeerConnection(null));
     useEffect(()=>{
@@ -18,6 +19,14 @@ export function PageVideo({user,chatId,eventId}){
 
 
     });*/
+    const viewVideo=(a)=>{
+if(a === '100%'){
+  setOnlyVideo(false);
+}
+else{
+  setOnlyVideo(true);
+}
+    };
 async function getmas(){
     try{
   const a = await axios.get("http://localhost:3000/Events/"+String(eventId));
@@ -57,10 +66,14 @@ if(info[0]==="nothing"){
   //<video ref = {localVideoRef}>autoPlay Mute</video>
  // console.log(info["gamers"]);
   //let mas = info["gamers"];
+  if(onlyVideo === true){
+    return (<VideoBlock func={viewVideo}/>);
+  }
+  else{
     if(buttonPush == 1){
 return(
 <div>
-<VideoBlock/>
+<VideoBlock func={viewVideo}/>
     <div className="divForBottons">
     <button className="buttonVP" onClick={outChat}>To chat</button>
         <button className="buttonVP" onClick={outDetails}>To datails</button>
@@ -94,7 +107,7 @@ return(
     else{
     if(buttonPush == 2){
         return(<div>
-          <VideoBlock/>
+          <VideoBlock func={viewVideo}/>
           <div className="divForBottons">
           <button className="buttonVP" onClick={outChat}>To chat</button>
         <button className="buttonVP" onClick={outDetails}>To datails</button>
@@ -108,7 +121,7 @@ return(
 else{
     return(
       <div>
-        <VideoBlock/>
+        <VideoBlock func={viewVideo}/>
     <div className="divForBottons">
       
         <button className="buttonVP" onClick={outChat}>To chat</button>
@@ -119,4 +132,4 @@ else{
 }
     }
 
-}
+}}

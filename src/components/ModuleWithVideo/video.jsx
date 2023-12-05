@@ -6,25 +6,36 @@ import 'rc-slider/assets/index.css'
 import "./video.css";
 import { getValue } from "@testing-library/user-event/dist/utils";
 
-export const VideoBlock = () =>{
+
+export const VideoBlock = ({func}) =>{
+  const srs=/*"https://media.w3.org/2010/05/sintel/trailer.mp4"*/null;
 const[size,setSize]= useState(["1000","500"]);
 const[isChange,setIsChange] = useState(0);
 const[isPlay,setIsPlay]=useState(false);
 const[secounds, setSecounds]= useState(0);
 const[buttonPressed,setButtonPressed]=useState(true);
 const[hide,setHide]=useState(false);
+const[videoPover,setVideoPover] = useState(5);
 var video = document.getElementById("vid");
 var change1 = document.getElementById("ch");
 /*const hideControls = ()=>{
   change1.hidden;
 }*/
+// ----volume logic -----
+const volumePlus = (e,value) =>{ 
+setVideoPover(e.target.value);
+if(video != null){
+video.volume = videoPover/10;
+}};
+// ----end----
 const fullScreen = () =>{
-  if(size[0]==="auto"){
+  if(size[0]==="100%"){
     setSize(["1000","500"]);
   }
   else{
-setSize(["auto","auto"]);
+setSize(["100%","100%"]);
   }
+  func(size[0]);
 }
 if(isPlay == true){setTimeout(function() {
   if(video.currentTime === video.duration){
@@ -92,35 +103,64 @@ else{
 }
 return t;
 };
-return(
-  <div  >
-    <div>
-      <video id="vid"  width={size[0]} height={size[1]} >
-        <source src={null} type="video/mp4"></source>
-      </video>
-      
-   
-   
-    <div className="boxChange" id="ch" >
+//----function for hide video controlls with fullscreen viev---
+const hideControlsWithFullScreen=(checkout)=>{
+  if(checkout === true && hide === true){
+    setHide(false);
+  }
+  if(checkout === false && hide === false){
+    setTimeout(()=>setHide(true), 4000);
+    
+  }
+}
+//-----end------
 
-     <li className="textsec">{conwertToNormalTime(Math.ceil(Number(secounds)*100)/100)}</li>
-     <button onClick={pause} className={buttonPressed===true?"buttonChangeClicked":"buttonChange"}>P</button>
-     <div id = "s" >
-      <input className="sider"
-      type="range"
-     step={0.1}
-     min={0}
+//buttonChangeClicked
+
+return(
+  <div>
+    <div className="fullScreen">
+    <div className={size[0] === "100%"?"fullcontrols":"boxChange"} id="ch" onMouseEnter={size[0]==="100%"?()=>hideControlsWithFullScreen(true):null} onMouseLeave={size[0]==="100%"?()=>hideControlsWithFullScreen(false):null}>
+    {hide === false?(<div className="controlsForVideo"><li className="textsec">{conwertToNormalTime(Math.ceil(Number(secounds)*100)/100)}</li>
+    <button onClick={pause} className={buttonPressed === true?"buttonChangeClicked":"buttonChange"}>P</button>
+    <div id = "s" >
+     <input className="ivisibleslider"
+     type="range"
+    step={0.1}
+    min={0}
     max={isChange}
     value={isPlay === true? secounds: null}
     onChange={change}
     onMouseEnter={videoStop}
     onMouseOutCapture={videoPlayAggain}
-      defaultValue={0}
-     />
-      </div>
+     defaultValue={secounds}
+    />
+     </div>
      
-      <button onClick={fullScreen} className="buttonChange">FS</button>
+    <div>
+    <input
+    className="sliderVolume"
+    type = "range"
+    step = {1}
+    max = {10}
+    min = {0}
+    value={videoPover}
+    onChange={volumePlus}
+    defaultValue={videoPover}
+          />
+     </div>
+     <button onClick={fullScreen} className="buttonChange">FS</button>
+    </div>):null}
     </div>
+  
+      <video id="vid"  width={size[0]} height={size[1]} >
+        <source src={srs} type="video/mp4"></source>
+      </video>
+      
+   
+   
+    
+    
     </div>
     </div>
     

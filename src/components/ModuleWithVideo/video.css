@@ -5,11 +5,12 @@ background-color: black;
 }
 
 .boxChange{
+    position: absolute;
     display: flex;
    background: linear-gradient(60deg,darkblue,orange,azure,white);
     
     margin-left: 55px;
-    
+    margin-top: 500px;
     width: 890px;
     height: 25px;
   
@@ -36,6 +37,7 @@ background-color: black;
     background-color: red;
 }
 .textsec{
+    font-weight: 900;
     margin-left: 10px;
     width: 80px;
     color: red;
@@ -56,4 +58,68 @@ background-color: black;
 }
 .videopos{
     justify-content: center;
+}
+.sliderVolume{
+    accent-color: red;
+}
+.fullScreen{
+    position: relative;
+}
+.fullcontrols{
+  
+    position: absolute;
+    
+    z-index:5;
+    text-align: center;
+    display: flex;
+    margin-left: 17%;
+    margin-top: 53%;
+        background: rgba(0, 0, 0, 0);
+     
+    
+     
+     width: 890px;
+     height: 25px;
+}
+.invisibleButtons{
+    width: 25px;
+    background: rgba(0, 0, 0, 0);
+}
+.ivisibleslider{
+    accent-color: rgba(0,0,0,0);
+   width: 600px;
+}
+.invisibleVolumeSlider{
+    accent-color: rgba(0,0,0,0);
+}
+.invisibleTimer{
+    margin-left: 10px;
+    width: 80px;
+    color: rgba(0, 0, 0, 0);
+}
+.controlsForVideo{
+    
+    z-index:10;
+    text-align: center;
+    display: flex;
+   
+   
+        background: rgba(0, 0, 0, 0);
+     
+    
+     
+     width: 890px;
+     height: 25px;
+}
+.videolayer{
+    z-index:0;
+}
+.vd{
+display: flex;
+background: linear-gradient(60deg,darkblue,orange,azure,white);
+ 
+
+ 
+ width: 890px;
+ height: 25px;
 }

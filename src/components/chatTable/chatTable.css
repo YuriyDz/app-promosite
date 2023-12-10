@@ -15,15 +15,18 @@ border: none;
         
 
 }
-.card{
-    border: none;
-background-color: lightskyblue;
+.card7{
+background-color: DeepSkyBlue;
 height: auto;
+border-radius: 10px;
+border: 0px solid orange;
 margin-left: 30px;
 width: 550px;
+
+transition: all .3s ease-in-out;
 }
-.card:hover{
-    animation-duration: 200ms;
+.card7:hover{
+     border-width: 8px;
     transform: scale(1.035,1.15);
 }
 .text{
@@ -38,31 +41,38 @@ border-radius: 3px;
 background-color:aqua;
 height: 25px;
 width: auto;
-
+padding-right: 3px;
+padding-left: 3px;
 font-weight: 800;
 
 }
 .card1{
+    
     position: center;
-    border: none;
-    background-color: lightgreen;
+    
+    border: 8px solid greenyellow;
+    border-radius: 10px;
+    background-color: DodgerBlue;
     height: auto;
     width: 550px;
     margin-left: 30px;
-
+    transition: all .3s ease-in-out;
 }
 .card1:hover{
-    animation-duration: 200ms;
+    
     transform: scale(1.035,1.15);
 }
 .card2{
-    border: none;
-background-color: lightpink;
+   
+    border: 8px solid red;
+    border-radius: 10px;
+background-color: DodgerBlue;
 height: auto;
 width: 550px;
 margin-left: 30px;
+transition: all .3s ease-in-out;
 }
 .card2:hover{
-    animation-duration: 200ms;
+    
     transform: scale(1.035,1.15);
 }

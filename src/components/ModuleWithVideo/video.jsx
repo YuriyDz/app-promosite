@@ -8,7 +8,7 @@ import { getValue } from "@testing-library/user-event/dist/utils";
 
 
 export const VideoBlock = ({func}) =>{
-  const srs=/*"https://media.w3.org/2010/05/sintel/trailer.mp4"*/null;
+  const srs="https://media.w3.org/2010/05/sintel/trailer.mp4";//*/"f";
 const[size,setSize]= useState(["1000","500"]);
 const[isChange,setIsChange] = useState(0);
 const[isPlay,setIsPlay]=useState(false);
@@ -124,7 +124,7 @@ return(
     {hide === false?(<div className="controlsForVideo"><li className="textsec">{conwertToNormalTime(Math.ceil(Number(secounds)*100)/100)}</li>
     <button onClick={pause} className={buttonPressed === true?"buttonChangeClicked":"buttonChange"}>P</button>
     <div id = "s" >
-     <input className="ivisibleslider"
+     <input className="sider"
      type="range"
     step={0.1}
     min={0}
@@ -152,9 +152,9 @@ return(
      <button onClick={fullScreen} className="buttonChange">FS</button>
     </div>):null}
     </div>
-  
+       
       <video id="vid"  width={size[0]} height={size[1]} >
-        <source src={srs} type="video/mp4"></source>
+        <source  src={srs} type="video/mp4"></source>
       </video>
       
    

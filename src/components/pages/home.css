@@ -1,15 +1,34 @@
 .topTable{
-    
-    
-    
+    width: auto;
+    height: 150px;
+    z-index: 10;
+    clip-path: polygon(0 0,0 50% ,50% 100%,100% 50%, 100% 0);
+    background: linear-gradient(90deg,Navy,RoyalBlue,Orange);
+
+    /*
     height: 80px;
        
-    background: linear-gradient(60deg,white,azure,orange,darkblue);
+    background: linear-gradient(60deg,white,white,lightgray,lightskyblue,aqua,dodgerblue,blue);
     position: relative;
-    
-   
-
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 100px solid linear-gradient(60deg,white,white,lightgray,lightskyblue,aqua,dodgerblue,blue);;
+   */
+  /* border-left: 50px solid transparent;
+   border-right: 50px solid transparent;
+   border-top: 100px solid ;*/
+ 
+  /* border-top-color: linear-gradient(60deg,white,white,lightgray,lightskyblue,aqua,dodgerblue,blue);*/
 }
+/*
+.topTable:after{
+    width: auto;
+    height: 150px;
+    z-index: 1;
+    clip-path: polygon(0 0,0 70% ,50% 100%,100% 70%, 100% 0,50% 30%);
+    background: black;
+}*/
+
 .buttonsT{
     
     
@@ -23,42 +42,124 @@ height: 40px;
 width: auto;
 text-align: center;
 background-color: white;
-transition: all .2s ease-in-out;
+transition: all .5s ease-in-out;
 
 }
 .buttonsT:hover{
+   transform: scale(1.2,1.2); 
 border-width: 6px;
 background-color: azure;
 
 }
-.homeButtons{ 
+.homeButtonToogle{
+    margin-left: 20%;
+    border: none;
+     height: 50px;
+        width: 10%;
+        clip-path: polygon(0 0,0 100%, 100% 100%, 100% 35%);
+        background: lightcoral;
+        transition: all .9s ease-in-out;
+}
+.buttonsToogleSection{
+    margin-top: -40px;
+    display: flex;
+}
+.homeButtonToogle:hover{
+    background: red;
+}
+.homeButtonToogle1{
+    margin-left: 40%;
+    border: none;
+    
+     height: 50px;
+        width: 10%;
+        clip-path: polygon(0 35%,0 100%, 100% 100%, 100% 0);
+        background: lightcoral;
+        transition: all .9s ease-in-out;
+}
+.homeButtonToogle1:hover{
+    background:red;
+}
+.homeButtonsTop{
     border-radius: 35px;
     margin-top: 15px;
     text-align:left;
 margin-left: 200px;
 height: auto;
 width: 800px;
+clip-path: polygon(0 0,0 70% ,50% 100%,100% 70%, 100% 0);
 border: none;
 transition: all .2s ease-in-out;
-background: linear-gradient(60deg,darkblue,lightskyblue,lightcoral,orange );
+background: linear-gradient(60deg,);
+}
+.homeButtonsTopF{
+    border-radius: 35px;
+    margin-top: 100px;
+    text-align:left;
+    margin-left: 200px;
+    height: auto;
+    width: 800px;
+    clip-path: polygon(0 0,0 70% ,50% 100%,100% 70%, 100% 0);
+    border-color: red;
+    transition: all .2s ease-in-out;
+    background: linear-gradient(90deg,white,azure,wheat );
+}
+.homeButtons{ 
+    
+    margin-top: 30px;
+    text-align:left;
+    border-radius: 5px;
+margin-left: 5px;
+height: auto;
+border-width: 0px;
+width: 95%;
+/*clip-path: polygon(0 0,0 70% ,50% 100%,100% 70%, 100% 0);*/
+border-color: greenyellow;
+transition: all .2s ease-in-out;
+background: linear-gradient(90deg,PaleTurquoise,SkyBlue);
 }
 .homeButtonsF{
-border-radius: 35px;
-margin-top: 100px;
+
+margin-top: 30px;
 text-align:left;
-margin-left: 200px;
+margin-left: 5px;
+border-width: 0px;
 height: auto;
-width: 800px;
+border-radius: 5px;
+/*clip-path: polygon(0 0,0 100%,100% 100%,100% 10%);*/
+width: 95%;
 border-color: red;
 transition: all .2s ease-in-out;
-background: linear-gradient(90deg,white,azure,wheat );
+background: linear-gradient(90deg,white,LemonChiffon);
+}
+.newsTitle{
+    margin-top: 30px;
+text-align:left;
+margin-left: 5px;
+height: auto;
+border-radius: 5px;
+/*clip-path: polygon(0 0,0 100%,100% 100%,100% 10%);*/
+width: 95%;
+border-width: 0px;
+border-color: red;
+
+transition: all .2s ease-in-out;
+background-color: Bisque;
+}
+.newsTitle:hover{
+    border-width: 8px;
+    
+    transform: scale(1.2) translatex(-5%);
+    
 }
 .text{
+    font-family: 'Helvetica', sans-serif;
     margin-left: 25px;
-color: white;
+color: black;
 font-size: large;
 }
 .textF{
+    font-family: 'Helvetica', sans-serif;
     margin-left: 25px;
     color: black;
     font-size: large;
@@ -78,17 +179,30 @@ text-align: center;
 font-size: x-large;
 }
 .homeButtons:hover{
-
-transform: scale(1.2);
+    border-width: 8px;
+    transform: scale(1.2) translatex(7%);
 }
 .homeButtonsF:hover{
-
-    transform: scale(1.2);
+    border-width: 8px;
+    transform: scale(1.2) translatex(7%);
     }
 .MP{
     
    
     font-size: xx-large;
     text-align: right;
-    margin-left: 30px;
+    margin-left: 60%;
+}
+.CardTable{
+    display: flex;
+}
+.section{
+    width: 50%;
+    height: auto;
+}
+.bodyColor{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url(https://img.freepik.com/premium-photo/gamer-playing-desktop-pc-computer-gaming-illustration_691560-5611.jpg);
 }

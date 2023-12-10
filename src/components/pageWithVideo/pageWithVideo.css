@@ -4,7 +4,7 @@ width: auto;
 height: auto;
 padding: 10px 10px 10px 10px;
 
-background:linear-gradient(60deg,white,azure,orange,darkblue);
+background:linear-gradient(180deg,lightskyblue,azure,Moccasin,tomato);
 }
 .chatbg{
     margin-top: 20px;
@@ -12,12 +12,14 @@ background:linear-gradient(60deg,white,azure,orange,darkblue);
 .box_with_gamers{
     width: auto;
     height: auto;
+    padding-top: 10px;
     display: flex;
     margin-top: 30px;
     margin-left: 10px;
     margin-right: 10px;
     background-color: azure;
     border-radius: 25px;
+    border: 3px solid blue;
 }
 .ct{
     color: darkblue;
@@ -33,10 +35,11 @@ background:linear-gradient(60deg,white,azure,orange,darkblue);
     margin-left: 10px;
 }
 .buttonVP{
-   margin-left: 20px;
-    width: 250px;
+   margin-left: 10px;
+   margin-top: 10px;
+    width: 240px;
     border: none;
-    height: auto;
+    height: 30px;
     font-size: x-large;
     color: white;
     background-color: lightcoral;
@@ -49,6 +52,7 @@ background:linear-gradient(60deg,white,azure,orange,darkblue);
 .divForBottons{
     margin-top: 20px;
     display: flex;
+    position:relative;
     justify-content: center;
 }
 .userText{
@@ -57,4 +61,30 @@ background:linear-gradient(60deg,white,azure,orange,darkblue);
 }
 .videopos{
     justify-content: center;
+}
+.datailsOfEvent{
+    height: 425px;
+    width: 600px;
+    padding-bottom: 100px;
+    display: inline;
+    background-color: bisque;
+}
+.detailsScroll{
+    margin-left: 10px;
+    margin-right: 20px;
+    height: 440px;
+    width: 500px;
+    overflow: scroll;
+}
+.buttonForm{
+    display: flex;
+}
+.eventHeader{
+    background-color: chocolate;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    font-size: x-large;
+    width: auto;
+    height: auto;
 }

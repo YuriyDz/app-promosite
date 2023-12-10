@@ -34,7 +34,7 @@ border: none;
 }
 .form1{
   display: flex; 
-background: linear-gradient(60deg,darkblue,orange,azure,white);
+background: linear-gradient(90deg,lightskyblue,azure,Moccasin,tomato);
 width: auto;
 height: 50px;
 }

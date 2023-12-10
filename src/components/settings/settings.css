@@ -4,7 +4,7 @@
     
     height: 60px;
    
-    background: linear-gradient(60deg,white,azure,orange,darkblue);
+    background: linear-gradient(90deg,lightskyblue,azure,Moccasin,tomato);
     position: relative;
     
 
@@ -12,7 +12,7 @@
 .Settingtables{
     width: auto;
     height: auto;
-    background-color: lightskyblue;
+    background-color: WhiteSmoke;
     
     
 }
@@ -27,6 +27,8 @@
     background-color: white;
 }
 .texterrors{
+    font-size: x-large;
+    font-weight: 800;
     color: red;
 }
 .textmoney{
@@ -81,16 +83,24 @@ text-align: left;
  }
  
  .buttonSubmitChanges{
+    color: white;
+    width: 100px;
     margin-top: 15px;
        margin-left: 20px;
-       background-color: green;
+       border-radius: 10px;
+       background-color: rebeccapurple;
        color: white;
        font-size: xx-large;
+       border: none;
        transition: all .2s ease-in-out;
  }
  .buttonSubmitChanges:hover{
-    background-color: darkgreen;
+    background-color: rgb(190, 125, 255);
     transform: scale(1.15);
+ }
+ .buttonSubmitChanges:active{
+    background-color: DarkMagenta;
+    transform: scale(0.85);
  }
 .buttondiv{
     display: flex;
@@ -107,4 +117,57 @@ text-align: left;
 .buttonBack:hover{
     background-color: darkgreen;
     transform: scale(1.15);
+}
+.buttonBack:active{
+    background-color: red;
+    transform: scale(0.85);
+}
+.buttonsb{
+    
+    
+    margin-top: 20px;
+
+border-color: red;
+border-width: 3px;
+margin-top: 10px;
+margin-left: 30%;
+font-size: xx-large;
+height: 40px;
+width: auto;
+background-color: white;
+transition: all .5s ease-in-out;
+
+}
+
+.buttonsb:hover{
+
+   transform: scale(1.5,1.5); 
+border-width: 6px;
+background-color: azure;
+}
+.formMain1{
+    background-color: wheat;
+    display: flex;
+    height: auto;
+    padding-bottom: 10px;
+    width: auto;
+}
+.divPiece{
+    text-align: center;
+    margin-right: 2%;
+    width: 50%;
+    height: auto;
+}
+.textUserSettings{
+    color: black;
+    font-weight: 700;
+}
+.textCorrectChange{
+    color: green;
+    font-size: x-large;
+    font-weight: 800;
+}
+.svgColor{
+    
+    color: white;
 }

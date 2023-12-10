@@ -7,7 +7,8 @@ background-color: black;
 .boxChange{
     position: absolute;
     display: flex;
-   background: linear-gradient(60deg,darkblue,orange,azure,white);
+    
+   background: linear-gradient(90deg,blue,tomato);
     
     margin-left: 55px;
     margin-top: 500px;
@@ -25,7 +26,7 @@ background-color: black;
     background-color: white;
     border-radius: 30px;
     transition: all .5s ease-in-out;
-
+  
 
 }
 .buttonChangeClicked{
@@ -63,7 +64,11 @@ background-color: black;
     accent-color: red;
 }
 .fullScreen{
+  
     position: relative;
+    
+   
+
 }
 .fullcontrols{
   
@@ -122,4 +127,11 @@ background: linear-gradient(60deg,darkblue,orange,azure,white);
  
  width: 890px;
  height: 25px;
+}
+.black_col{
+    background-color: black;
+    border: 5px solid blue;
+}
+.videopos{
+    margin-right: 55px;
 }

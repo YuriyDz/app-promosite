@@ -1,10 +1,92 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
-import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Grid, Typography } from '@mui/material';
 import { Items } from './homeMap';
+
 import './home.css';
-export const Home = ({funcC,func,user,userTickets,funcp}) => {
+const CardNews = ({data,funcSetIndex,id,naw})=>{
+    let a = data.text;
+    if(a === undefined){
+        return null;
+    }
+    
+    let p1 = a[0];
+    let p2 = a[1];
+    //alert(id);
+   const goToNewsPage=()=>{
+    funcSetIndex(id);
+      naw("/news", { replace: true });
+   };
+    return(
+        <li>
+<button className='newsTitle' onClick={goToNewsPage}>
+    {p1[0]==2?<img src={p1[1]}></img>:<b>{p1[1]}</b>}
+    {p2 === undefined?null:p2[0]==2?<img src={p2[1]}></img>:<p>{p2[1]}</p>}
+    <p>Want khow more click the button</p>
+    
+</button>
+</li>
+    );
+/*
+return(
+    <li>
+<button className='newsTitle' onClick={()=>funcSetIndex(id)}>
+ {(a.map((item,index)=>{
+if(index === 2)
+if(item[0]===1){
+return(<p>{item[1]}</p>);
+    }
+    else{
+        return null;//(<img src={item[1]}></img>);
+    }
+})
+ )}
+</button>
+</li>
+);//*/
+return <p>{data.text}</p>
+}
+
+const Card = ({data, index,nowOrFuture,isReady,date}) =>{
+
+//    let idm;
+  /*  for(let i in elements){
+        
+        idm = elements[i];
+        break;
+    }*/
+    
+    let dh = String(data.dateToOpen).split(' ');
+        if(nowOrFuture(date.getDate()+"."+String(Number(date.getMonth())+1)+"."+date.getFullYear()+" "+date.getHours()+':'+date.getMinutes(),String(data.dateToOpen))===true){
+      return(<li>
+         <button className='homeButtons' /*onClick={() =>isReady(idm,data.name,data.ticketPrice)}*/onClick={()=>isReady(data.id,data.name,data.ticketPrice)}>
+         <p className='text'>{data.name}</p>
+         <p className='text'>Час: {dh[1]}</p>
+         <p className='text'>Місце: {data.place}</p>
+         <p className='text'> &copy; {dh[0]} Кіберспортивна Подія. Усі права захищені.</p>
+         <p className='text'>Ціна на квиток: {<nobr className='text2'>{data.ticketPrice}$</nobr>}</p>
+         </button>
+         </li>
+         );}
+         else{
+            return(<li>
+                <button className='homeButtonsF' onClick={()=>isReady(data.id,data.name,data.ticketPrice)}>
+                <p className='textF'>{data.name}</p>
+                <p className='textF'>Час: {dh[1]}</p>
+                <p className='textF'>Місце: {data.place}</p>
+                <p className='textF'>&copy; {dh[0]} Кіберспортивна Подія. Усі права захищені.</p>
+                <p className='textF'>Ціна на квиток {<nobr className='text2'>{data.ticketPrice}$</nobr>}</p>
+                </button>
+                </li>
+                );
+            }
+   
+
+};
+
+
+export const Home = ({funcC,func,user,userTickets,funcp,funcSetIndex,news}) => {
     let date = new Date();
     const navigate = useNavigate();
 const[info,setInfo]= useState(['nothing']);
@@ -113,14 +195,19 @@ return false;
 }
 
 return (
-<>
-<div className='topTable'>
+<body className='bodyColor'>
+<header className='topTable'>
 <button className='buttonsT' onClick={()=>next('r')}><b className='text1'>Regiser</b></button>
 <button className='buttonsT' onClick={()=>next('l')}><b className='text1'>Login</b></button>
-<button className='buttonsT' onClick={()=>next('u')}><b className='text1'>{user}</b></button>
+<button className='buttonsT' onClick={()=>next('u')}><b className='text1'>{user} <img src="https://uxwing.com/wp-content/themes/uxwing/download/tools-equipment-construction/setting-line-icon.svg" height="22px" width="22px"/></b></button>
 <b className='MP'>Main page</b>
+</header>
+<div className='buttonsToogleSection'>
+<button className='homeButtonToogle'></button>
+<button className='homeButtonToogle1'></button>
 </div>
-<header class="header">
+
+ <header class="header">
 
         <h1>Кіберспортивна Подія</h1>
     </header>
@@ -128,55 +215,21 @@ return (
     <section class="event-info">
         <div class="container">
             <div class="event-details">
-                <h2>Деталі Події</h2>
-                <ul >
+                <h2>Деталі Події</h2> 
+                <div className='CardTable'>
+                <div className='section'>
+                   {info.map((item,index)=>(
+                    <Card data={item} index={index} nowOrFuture={nowOrFuture} isReady={isReady} date = {date}/>
+                   ))
+                }  </div>
+                <div className='section'>               
+                   {news.map((item,index)=>(
+                    <CardNews data={item} funcSetIndex={funcSetIndex} id={index} naw={navigate}/>
+                   ))
+                }    </div>             
                   
-                
-                   <>
-                   {info.map(function(elements){
-                    let idm;
-                    for(let i in elements){
-                        
-                        idm = elements[i];
-                        break;
-                    }
-                    
-                    let dh = String(elements.dateToOpen).split(' ');
-                        if(nowOrFuture(date.getDate()+"."+String(Number(date.getMonth())+1)+"."+date.getFullYear()+" "+date.getHours()+':'+date.getMinutes(),String(elements.dateToOpen))===true){
-                      return(
-                         <button className='homeButtons' onClick={() =>isReady(idm,elements.name,elements.ticketPrice)}>
-                         <p className='text'>{elements.name}</p>
-                         <p className='text'>Час: {dh[1]}</p>
-                         <p className='text'>Місце: {elements.place}</p>
-                         <p className='text'> &copy; {dh[0]} Кіберспортивна Подія. Усі права захищені.</p>
-                         <p className='text'>Ціна на квиток: {<nobr className='text2'>{elements.ticketPrice}$</nobr>}</p>
-                         </button>
-                         );}
-                         else{
-                            return(
-                                <button className='homeButtonsF' onClick={()=>isReady(idm,elements.name,elements.ticketPrice)}>
-                                <p className='textF'>{elements.name}</p>
-                                <p className='textF'>Час: {dh[1]}</p>
-                                <p className='textF'>Місце: {elements.place}</p>
-                                <p className='textF'>&copy; {dh[0]} Кіберспортивна Подія. Усі права захищені.</p>
-                                <p className='textF'>Ціна на квиток {<nobr className='text2'>{elements.ticketPrice}$</nobr>}</p>
-                                </button>
-                                );
-                         }
-                   })
-                }                   
-                   </>
-                
-                    <li>
-                        <strong>Дата:</strong> 01 січня 2024
-                    </li>
-                    <li>
-                        <strong>Час:</strong> 15:00
-                    </li>
-                    <li>
-                        <strong>Місце:</strong> Ваша Адреса
-                    </li>
-                </ul>
+                </div>
+                 
             </div>
             <div class="event-description">
                 <h2>Опис Події</h2>
@@ -190,7 +243,7 @@ return (
     <footer class="footer">
         
     </footer>
-</>
+</body>
 )
 };
 // <Items item={info} func={func}></Items>

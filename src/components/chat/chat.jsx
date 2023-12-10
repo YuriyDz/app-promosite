@@ -1,6 +1,9 @@
 //import logo from './logo.svg';
 import { addusers } from '../scripts/addUsers';
 import './chattt.css';
+import { Socket } from 'socket.io-client';
+import WebSocket from 'ws';
+import { io } from 'socket.io-client';
 import { ChatTable } from '../chatTable/chatTable';
 //import modalWindow from '../modalWindowInput/modalWindw';
 import {InterfaceTable}  from '../InputBotton/InputBotton';
@@ -197,24 +200,49 @@ getmas();
                <button onClick={setSlapIndex(slapIndex+1)}></button>
                <button onClick={setSlapIndex(slapIndex-1)}></button>
               */
+          //     const soket = new WebSocket("ws://localhost:8080");
+               const socket = io("http://localhost:8080");
+
              function rel(){
               
 
 
              }
                export function Chat({user,chatId}) {
-                
+               socket.on("onSend",message=>{
+                console.log(chatPiece);
+                        console.log(message);
+                        getmas();
+                        if(message !== 'd'){
+                        
+                        try{
+                          console.log(message);
+                          const chatList = Number(message);
+                          if((chatList + range + 1 > chatPiece && chatList - range -1 < chatPiece)){
+                          setChatPiece(chatPiece-1);
+                        }
+                        peice();
+                        }
+                        catch{
+
+                        }
+                      }
+                      //  setChatPiece(chatPiece-1);
+               });
+             /*  soket.onmessage = event =>{
+                console.log(event.data);
+            }*/
               // console.log(typeof(user));
                 const[chatData,setChatData] = useState(["nothing"]);
-                const url="http://localhost:3000/"+String(chatId)+"/";
+                const url="http://localhost:3000/chatTable/";//"http://localhost:3000/"+String(chatId)+"/";
               async function getmas(){
                 try{
               const a = await axios.get(url);
               console.log(a.data);
-            setChatData(a.data["chatTablre"]);
+            setChatData(a.data);//["chatTablre"]);
             }
             catch{
-              alert("Невдалось завантажити сторінку. Можливо у вас відсутнє підключення до інтернету");
+             // alert("Невдалось завантажити сторінку. Можливо у вас відсутнє підключення до інтернету");
               return;
             }}
             console.log(chatData);
@@ -232,9 +260,11 @@ getmas();
               getmas();
            }
             async function deletRequest(){
-
+                 
                 await axios.delete(url+String(chatData[cid]["id"]));
-                 getmas();
+                socket.emit("onSend",`d ${String(chatPiece)}`);
+                // getmas();
+
             }
                // const[modalOpen,setModalOpen] = useState(false);
                 const[cid,setCid]=useState(-1);
@@ -310,6 +340,7 @@ getmas();
                 };
                   
                     const doSend = () => {
+                  socket.emit("onSend","%0_0/");
                       let m = {};
                       console.log(chatData);
                       
@@ -323,6 +354,7 @@ getmas();
                               setSend(true);
                            }
                            else{
+                           // soket.send(JSON.stringify("dff"));
                             if(chatData.length == 0){
                               m = {
                               "user": user,

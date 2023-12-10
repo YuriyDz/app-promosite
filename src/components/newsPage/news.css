@@ -1,0 +1,47 @@
+.back{
+    background-color: #D3D3D3;
+}
+.text{
+   font-size: x-large;
+    font-weight: 700;
+    fill: black
+    
+}
+.imgS{
+    height: 50%;
+    width: 50%;
+    margin-left: 20%
+}
+.upcomponent{
+width: auto;
+height: 70px;
+z-index: 10;
+background: linear-gradient(90deg,lightskyblue,cyan,azure);
+display: flex;
+}
+.buttonsa{
+    
+    
+    margin-top: 20px;
+
+border-color: red;
+border-width: 3px;
+margin-left: 30%;
+
+height: 40px;
+width: auto;
+text-align: center;
+background-color: white;
+transition: all .5s ease-in-out;
+
+}
+.textMain{
+    margin-left: 1%;
+    margin-top: 10px;
+}
+.buttonsa:hover{
+   transform: scale(1.2,1.2); 
+border-width: 6px;
+background-color: azure;
+
+}

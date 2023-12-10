@@ -482,11 +482,14 @@ let user1 = userData[user];
   console.log(mask[7]+" "+birthdate);
       return (
         <div>
-            <div className='formMain'><b className='textuser'>{mask[1]}</b><button className='buttonBack' onClick={backToMainPage}>Back to main page</button><b className='textmoney'>{mask[8]}$</b></div>
+            <div className='formMain'><b className='textuser'>Welcome {mask[1]}</b><button className='buttonsb' onClick={backToMainPage}>Back to main page</button><b className='textmoney'>{mask[8]}$</b></div>
           <form onSubmit={handleSubmit} className='Settingtables'>
+           <div className='formMain1'>
+           <div className='divPiece'>
+            <b className='textUserSettings'>Name:</b>
             <div>
                 
-              <label htmlFor="name"> ___Name:____________</label>
+              <label htmlFor="name"></label>
               <input
               className={(name === mask[1])?'tableDefault':'table'} 
                 type="text"
@@ -496,8 +499,9 @@ let user1 = userData[user];
                 />
                 <button className='buttonD' onClick={setDefaultName}>Default</button>
             </div>
+            <b className='textUserSettings'>Email:</b>
             <div>
-            <nobr className='textLabletext'> ___Email:____________</nobr>
+            <nobr className='textLabletext'></nobr>
               <label htmlFor="email">  </label>
               <input
               className={(email === mask[2])?'tableDefault':'table'} 
@@ -508,8 +512,9 @@ let user1 = userData[user];
               />
               <button className='buttonD' onClick={setDefaultEmail}>Default</button>
             </div>
+            <b className='textUserSettings'>Password:</b>
             <div>
-              <label htmlFor="password">___Password:________</label>
+              <label htmlFor="password"></label>
               <input
               className={(password === mask[3])?'tableDefault':'table'} 
                 type="password"
@@ -519,8 +524,9 @@ let user1 = userData[user];
                 />
                 <button className='buttonD' onClick={setDefaultPasword}>Default</button>
              </div>
+             <b className='textUserSettings'>Correct password:</b>
               <div>
-              <label htmlFor="password">___Correct password:</label>
+              <label htmlFor="password"></label>
               <input
               className={(password === mask[3])?'tableDefault':'table'} 
                 type="password"
@@ -529,8 +535,9 @@ let user1 = userData[user];
                 onChange={handleCorrectPasswordChange}
                 />
              </div>
+             <b className='textUserSettings'>Birthdate:</b>
             <div>
-              <label htmlFor="birthdate">___Birthdate:________</label>
+              <label htmlFor="birthdate"></label>
               <input
               className={(birthdate === mask[7])?'tableDefault':'table'} 
                 type="date"
@@ -540,8 +547,9 @@ let user1 = userData[user];
               />
               <button className='buttonD' onClick={setDefaultBirthday}>Default</button>
             </div>
+            <b className='textUserSettings'>Home address:</b>
             <div>
-              <label htmlFor="address">___Address:_________</label>
+              <label htmlFor="address"></label>
               <input
               className={(address === mask[6])?'tableDefault':'table'} 
                 type="text"
@@ -551,9 +559,10 @@ let user1 = userData[user];
               />
               <button className='buttonD' onClick={setDefaultAdress}>Default</button>
             </div>
+            <b className='textUserSettings'>Phone:</b>
             <div>
              
-              <label htmlFor="phone">___Phone:___________</label>
+              <label htmlFor="phone"></label>
               <input
               className={(phone === mask[5])?'tableDefault':'table'} 
                 type="tel"
@@ -563,18 +572,23 @@ let user1 = userData[user];
               />
               <button className='buttonD' onClick={setDefaultPhone}>Default</button>
             </div>
-            <div>
+            </div>
+            <div className='divPiece'>
              
                 
                 <div>
+                  <b className={messageOfMistakes.length === 0?'textCorrectChange':'texterrors'}>{messageOfMistakes.length === 0?'Нема помилок ✅':'Помилки:'}</b>
                     {messageOfMistakes.map(function(i){
                              return<p className='texterrors'>{i}</p>;
                         })
                     }
                 </div>
                 </div>
+                </div>
                 <div className='buttondiv'>
-            <button className='buttonSubmitChanges' type="submit" onClick={submitCorrectChange}>Save Changes</button>
+            <button className='buttonSubmitChanges' type="submit" onClick={submitCorrectChange}><img src="https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/right-file-icon.svg" width="25px" height="25px"/></button>
+            <button className='buttonSubmitChanges' type="button" onClick={handleOutWithAccount}><img src="https://uxwing.com/wp-content/themes/uxwing/download/web-app-development/door-check-out-icon.svg" width="25px" height="25px"/></button>
+            <button className='buttonSubmitChanges' type="button" onClick={handleAccountDeletion}><img src="https://uxwing.com/wp-content/themes/uxwing/download/user-interface/recycle-bin-line-icon.svg" width="25px" height="25px"/></button>
             </div>
             <div>
               <p></p>
@@ -613,8 +627,7 @@ let user1 = userData[user];
                <button type="button" onClick={handleWithdrawalSubmit}>Withdraw</button>
             </div>
             <div className='buttondiv'>
-            <button className='buttonSubmitChanges' type="button" onClick={handleOutWithAccount}>Out With Account</button>
-            <button className='buttonSubmitChanges' type="button" onClick={handleAccountDeletion}>Delete Account</button>
+            
             </div>
             </div>
           </form>

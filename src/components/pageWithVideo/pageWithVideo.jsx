@@ -73,10 +73,20 @@ if(info[0]==="nothing"){
     if(buttonPush == 1){
 return(
 <div>
+<div className="divForBottons">
 <VideoBlock func={viewVideo}/>
-    <div className="divForBottons">
+   <div className="datailsOfEvent">
+   <div className="eventHeader">
+           {info.name}
+        </div>
+   <div className="detailsScroll">
+   {info.detailsr}
+</div>
+   <div className="buttonForm">
     <button className="buttonVP" onClick={outChat}>To chat</button>
         <button className="buttonVP" onClick={outDetails}>To datails</button>
+        </div>
+        </div>
         </div>
     <div className="bg">
 {info["gamers"].map(function(elements){
@@ -107,10 +117,20 @@ return(
     else{
     if(buttonPush == 2){
         return(<div>
-          <VideoBlock func={viewVideo}/>
           <div className="divForBottons">
+          <VideoBlock func={viewVideo}/>
+        <div className="datailsOfEvent"> 
+        <div className="eventHeader">
+           {info.name}
+        </div> 
+        <div className="detailsScroll">
+        {info.detailsr}
+</div>
+<div className="buttonForm">
           <button className="buttonVP" onClick={outChat}>To chat</button>
         <button className="buttonVP" onClick={outDetails}>To datails</button>
+        </div>
+        </div>
         </div>
         <div className="chatbg">
         <Chat user={user} chatId={chatId} />
@@ -121,11 +141,21 @@ return(
 else{
     return(
       <div>
+        <div className="divForBottons">
         <VideoBlock func={viewVideo}/>
-    <div className="divForBottons">
-      
+   
+       <div className="datailsOfEvent">
+        <div className="eventHeader">
+           {info.name}
+        </div>
+        <div className="detailsScroll">
+       {info.detailsr}
+        </div>
+        <div className="buttonForm">
         <button className="buttonVP" onClick={outChat}>To chat</button>
         <button className="buttonVP" onClick={outDetails}>To datails</button>
+       </div>
+       </div>
     </div>
     </div>);
 

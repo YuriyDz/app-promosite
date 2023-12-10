@@ -59,7 +59,7 @@ const mas = conwertWithObjectToMas(chatTable);
         else{
             if(value[0] === userOwner){
                 return(
-                    <p className='card'>
+                    <p className='card7'>
                         <button className='button' onClick={() => func(index)}>
                             <b className='user'> you </b>
                             <p className='text'>{needUnder(value[1])}</p>
@@ -69,7 +69,7 @@ const mas = conwertWithObjectToMas(chatTable);
             }
             else{
                 return(
-                    <p className='card'>
+                    <p className='card7'>
                         <button className='button' onClick={() => func(index)}>
                             <b className='user'> {value[0]} </b>
                             <p className='text'>{needUnder(value[1])}</p> 

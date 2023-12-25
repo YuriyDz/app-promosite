@@ -127,8 +127,10 @@ case 'u':
         alert("Ввійдіть в свій аккаунт або створіть його");
         return; 
     }
+   
    // alert(id);
-    window.localStorage.setItem('eventid', JSON.stringify(id));
+  //eee  window.localStorage.setItem('eventid', JSON.stringify(id));
+  funcp(id);
     let ut;
     let money;
 for(let  i in userTickets){
@@ -145,6 +147,9 @@ for(let i of ut){
         return;
     }
 }
+//maye buti dialogove vikno
+//if(prompt("Ви дійсно хочете купити квиток? Ви завжди зможете переглянути його в списку ваших квитків")===false){
+  //  return;
 //alert(money+" "+id);
 if(money - price >=0){
     

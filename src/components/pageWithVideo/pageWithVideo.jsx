@@ -4,11 +4,16 @@ import {VideoBlock}  from "../ModuleWithVideo/video";
 //import io from 'socket.io-client';
 import './pageWithVideo.css';
 import { Chat } from "../chat/chat";
+import { useNavigate } from "react-router-dom";
 //import { Socket } from "dgram";
 export function PageVideo({user,chatId,eventId}){
+  const navigate = useNavigate();
+  if(eventId === -1){
+    eventId = JSON.parse(window.localStorage.getItem('eventid')) ?? [];
+  }
   //const localVideoRef = useRef(null);
  // const remoteVideoRef = useRef(null);
-    eventId = JSON.parse(window.localStorage.getItem('eventid')) ?? [];
+    // FIX !!!!eventId = JSON.parse(window.localStorage.getItem('eventid')) ?? [];
     const[buttonPush,setButtonPush]=useState(-1);
     const[info,setInfo]= useState(['nothing']);
     const[onlyVideo,setOnlyVideo]=useState(false);
@@ -66,15 +71,18 @@ if(info[0]==="nothing"){
   //<video ref = {localVideoRef}>autoPlay Mute</video>
  // console.log(info["gamers"]);
   //let mas = info["gamers"];
+  const toMainP = () =>{
+    navigate("/",{replace: true});
+  }
   if(onlyVideo === true){
-    return (<VideoBlock func={viewVideo}/>);
+    return (<VideoBlock func={viewVideo} srs ={info.url}/>);
   }
   else{
     if(buttonPush == 1){
 return(
 <div>
 <div className="divForBottons">
-<VideoBlock func={viewVideo}/>
+<VideoBlock func={viewVideo} srs ={info.url}/>
    <div className="datailsOfEvent">
    <div className="eventHeader">
            {info.name}
@@ -83,6 +91,7 @@ return(
    {info.detailsr}
 </div>
    <div className="buttonForm">
+   <button className="buttonVP" onClick={toMainP}>Back</button>
     <button className="buttonVP" onClick={outChat}>To chat</button>
         <button className="buttonVP" onClick={outDetails}>To datails</button>
         </div>
@@ -118,7 +127,7 @@ return(
     if(buttonPush == 2){
         return(<div>
           <div className="divForBottons">
-          <VideoBlock func={viewVideo}/>
+          <VideoBlock func={viewVideo} srs ={info.url}/>
         <div className="datailsOfEvent"> 
         <div className="eventHeader">
            {info.name}
@@ -127,13 +136,14 @@ return(
         {info.detailsr}
 </div>
 <div className="buttonForm">
+<button className="buttonVP" onClick={toMainP}>Back</button>
           <button className="buttonVP" onClick={outChat}>To chat</button>
         <button className="buttonVP" onClick={outDetails}>To datails</button>
         </div>
         </div>
         </div>
         <div className="chatbg">
-        <Chat user={user} chatId={chatId} />
+        <Chat user={user} chatId2={eventId} />
         </div>
         </div>
         );
@@ -142,7 +152,7 @@ else{
     return(
       <div>
         <div className="divForBottons">
-        <VideoBlock func={viewVideo}/>
+        <VideoBlock func={viewVideo} srs ={info.url}/>
    
        <div className="datailsOfEvent">
         <div className="eventHeader">
@@ -152,8 +162,10 @@ else{
        {info.detailsr}
         </div>
         <div className="buttonForm">
+        <button className="buttonVP" onClick={toMainP}>Back</button>
         <button className="buttonVP" onClick={outChat}>To chat</button>
         <button className="buttonVP" onClick={outDetails}>To datails</button>
+        
        </div>
        </div>
     </div>

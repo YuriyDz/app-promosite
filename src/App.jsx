@@ -31,8 +31,9 @@ function App() {
   const[usersData,setUsersData]=useState('nothing');
   const[id,setId]=useState(-1);
   const[idp,setIdp]=useState(-1);
-  const[indexnews,setIndexnews]=useState(-1);
+ const[indexnews,setIndexnews]=useState(-1);
   const[news,setNews]=useState(['nothing']);
+ // alert(idp);
 async function getnews(){
     // alert("tggggg");
        try{
@@ -47,7 +48,7 @@ async function getnews(){
    if(news[0]==="nothing"){
      getnews();
    }
-   const setkfd = (i) =>{
+  const setkfd = (i) =>{
       setIndexnews(i);
    };
   async function setIdNews(index){
@@ -85,10 +86,14 @@ JSON.parse(window.localStorage.getItem('userid')) ?? []
       
        
     };
-    const getIdp =()=>{
-      setIdp(
-      JSON.parse(window.localStorage.getItem('eventid')) ?? []
-      );
+    async function getIdp (value){
+      window.localStorage.setItem('eventid', JSON.stringify(value));
+      await setIdp(
+         value
+        //JSON.parse(window.localStorage.getItem('eventid')) ?? []
+      )
+      //setIdp(idp);
+      
           };
           async function updateUserData(mas,idu){
             alert(idu);
@@ -97,6 +102,7 @@ JSON.parse(window.localStorage.getItem('userid')) ?? []
             await axios.patch("http://localhost:3000/userData/"+String(idu),mas);
             getmas();
          }
+       //  <Route path="/chat" element={<Chat user={user} chatId2={idp}/>}/>
   return(
      <p>
      
@@ -106,7 +112,7 @@ JSON.parse(window.localStorage.getItem('userid')) ?? []
         <Route path="/news" element={<NewsPage data={news} index={JSON.parse(window.localStorage.getItem('newsid'))}/>}/>
         <Route path="/home" element={<SharedLayout user={user} />}/>
         <Route path="/" element={<Home funcC={updateUserData} funcU={getmas} func={getId} user={user} userTickets={usersData[Number(JSON.parse(window.localStorage.getItem('userid')) ?? [])]} funcp={getIdp} funcSetIndex={setIdNews} news={news}/>} />
-        <Route path="/chat" element={<Chat user={user} chatId={id} />} />
+        
         <Route path="/login" element={<Login usersData={usersData} func={changeUser}/>} />
         <Route path="/register" element={<Register usersData = {usersData} func = {getmas}/>} />
         <Route path="/userSettings" element={<UserSettingsPage updateUD={getmas} func={changeUser} funcC={updateUserData} funcU={getmas} userData = {usersData} user={Number(JSON.parse(window.localStorage.getItem('userid')) ?? [])}/>} />

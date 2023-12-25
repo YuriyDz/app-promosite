@@ -5,19 +5,23 @@ import Slider from "rc-slider";
 import 'rc-slider/assets/index.css'
 import "./video.css";
 import { getValue } from "@testing-library/user-event/dist/utils";
+import { fabClasses } from "@mui/material";
 
 
-export const VideoBlock = ({func}) =>{
-  const srs="https://media.w3.org/2010/05/sintel/trailer.mp4";//*/"f";
+
+export const VideoBlock = ({func, srs}) =>{
+  //const srs="";//"https://media.w3.org/2010/05/sintel/trailer.mp4";//"https://www.youtube.com/embed/tmg6d3T_T6Q";//"www.youtube.com/watch?v=IEDEtZ4UVtI";//"https://i.ytimg.com/vi/61r5hHrKu10/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&amp;rs=AOn4CLBnZbgZcHNX252YWZ5PIkg3mInfGw";//"";//*/"f";
 const[size,setSize]= useState(["1000","500"]);
 const[isChange,setIsChange] = useState(0);
 const[isPlay,setIsPlay]=useState(false);
 const[secounds, setSecounds]= useState(0);
 const[buttonPressed,setButtonPressed]=useState(true);
 const[hide,setHide]=useState(false);
+const[videoDontPlayWithVideoElement,setVideoDontPlayWithVideoElement]=useState(false);
 const[videoPover,setVideoPover] = useState(5);
 var video = document.getElementById("vid");
 var change1 = document.getElementById("ch");
+//var videoDontPlayWithVideoElement=false;
 /*const hideControls = ()=>{
   change1.hidden;
 }*/
@@ -52,10 +56,19 @@ else{
   video.currentTime = secounds;
 }}
 const pause = () =>{
+ 
+        
+      
+    
 if(isPlay == false){
+  if(String(video.duration) === "NaN"){
+    setVideoDontPlayWithVideoElement(true);
+    return;
+  }
   setIsChange(video.duration);
   setIsPlay(true);
   setButtonPressed(false);
+  
   video.currentTime = secounds;
   video.play();
 }
@@ -65,6 +78,8 @@ setButtonPressed(true);
 setSecounds(video.currentTime)
 video.pause();
 }
+
+    
 }
 //Logic change time video ---start---
 const videoPlayAggain = ()=>{
@@ -117,6 +132,8 @@ const hideControlsWithFullScreen=(checkout)=>{
 
 //buttonChangeClicked
 
+
+if(videoDontPlayWithVideoElement === false){
 return(
   <div>
     <div className="fullScreen">
@@ -165,4 +182,18 @@ return(
     </div>
     
      );
+} 
+else{
+  return(
+    <div className="styleForYoutubeV">
+          <iframe width="975"
+                        height="487.5"
+                        src= {srs}
+                        title="Video"
+                        allowFullScreen > 
+                </iframe> 
+
+         </div> 
+  );
+}
 };

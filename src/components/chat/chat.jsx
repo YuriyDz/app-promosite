@@ -208,12 +208,19 @@ getmas();
 
 
              }
-               export function Chat({user,chatId}) {
+               export function Chat({user,chatId2}) {
+                //chatId = JSON.parse(window.localStorage.getItem('eventid')) ?? [];
+               console.log(chatId2);
                socket.on("onSend",message=>{
                 console.log(chatPiece);
                         console.log(message);
+                        let retMeasege = message.split(' ');
+                        console.log(retMeasege);
+                        retMeasege = retMeasege[retMeasege.length-1];
+                        console.log(retMeasege);
+                        if(Number(retMeasege) === chatId2){
                         getmas();
-                        if(message !== 'd'){
+                        if(message[0] !== 'd'){
                         
                         try{
                           console.log(message);
@@ -226,7 +233,7 @@ getmas();
                         catch{
 
                         }
-                      }
+                      }}
                       //  setChatPiece(chatPiece-1);
                });
              /*  soket.onmessage = event =>{
@@ -234,7 +241,7 @@ getmas();
             }*/
               // console.log(typeof(user));
                 const[chatData,setChatData] = useState(["nothing"]);
-                const url="http://localhost:3000/chatTable/";//"http://localhost:3000/"+String(chatId)+"/";
+                const url="http://localhost:3000/chatTable"+String(chatId2)+"/";//"http://localhost:3000/"+String(chatId)+"/";
               async function getmas(){
                 try{
               const a = await axios.get(url);
@@ -262,7 +269,7 @@ getmas();
             async function deletRequest(){
                  
                 await axios.delete(url+String(chatData[cid]["id"]));
-                socket.emit("onSend",`d ${String(chatPiece)}`);
+                socket.emit("onSend",`d ${String(chatPiece)} ${chatId2}`);
                 // getmas();
 
             }
@@ -340,7 +347,7 @@ getmas();
                 };
                   
                     const doSend = () => {
-                  socket.emit("onSend","%0_0/");
+                 
                       let m = {};
                       console.log(chatData);
                       
@@ -376,6 +383,7 @@ getmas();
                            console.log(m,"127");
                            update(m);
                            setChatText(''); 
+                           socket.emit("onSend","1 "+String(chatId2));
                     };
                     const handleEmailChange = (event) => {
                         setChatText(event.target.value);

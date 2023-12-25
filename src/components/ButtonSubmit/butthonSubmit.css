@@ -2,15 +2,19 @@
     margin-top: 5px;
    
     margin-left: 5px;
-background-color: palevioletred;
+background-color: coral;
 width: 40px;
 border-radius: 35px;
 height: 40px;
 color: white;
 border: none;
+transition: all .5s ease-in-out;
 }
 .button4:hover{
-background-color: red;
+background-color: tomato;
 transform: scale(1.15);
-
+}
+.button4:active{
+    background-color: red ;
+    transform: scale(0.85);
 }

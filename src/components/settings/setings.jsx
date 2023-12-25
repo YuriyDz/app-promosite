@@ -543,7 +543,7 @@ let user1 = userData[user];
               <div>
               <label htmlFor="password"></label>
               <input
-              className={(password === mask[3])?'tableDefault':'table'} 
+              className={(password === mask[3])?'tableDefaultVurivnyaniy':'tableVurivnyaniy'} 
                 type="password"
                 id="correctPassword"
                 value={correctPassword}

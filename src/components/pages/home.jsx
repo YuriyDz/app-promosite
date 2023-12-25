@@ -22,7 +22,7 @@ const CardNews = ({data,funcSetIndex,id,naw})=>{
         <li>
 <button className='newsTitle' onClick={goToNewsPage}>
     {p1[0]==2?<img src={p1[1]}></img>:<b>{p1[1]}</b>}
-    {p2 === undefined?null:p2[0]==2?<img src={p2[1]}></img>:<p>{p2[1]}</p>}
+    {p2 === undefined?null:p2[0]==2?<img src={p2[1]}></img>:<b>{p2[1]}</b>}
     <p>Want khow more click the button</p>
     
 </button>

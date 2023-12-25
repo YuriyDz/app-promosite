@@ -96,7 +96,7 @@ JSON.parse(window.localStorage.getItem('userid')) ?? []
       
           };
           async function updateUserData(mas,idu){
-            alert(idu);
+            
            // console.log('flfdld'+" "+JSON.parse(window.localStorage.getItem('userid')) ?? []);
             console.log(mas);
             await axios.patch("http://localhost:3000/userData/"+String(idu),mas);

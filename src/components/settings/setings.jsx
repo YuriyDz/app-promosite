@@ -294,6 +294,21 @@ let user1 = userData[user];
     
       const handleWithdrawalSubmit = (e) => {
         e.preventDefault();
+        let obj = {
+          "id": user1["id"],
+          "name": user1["name"],
+          "email": user1["email"],
+          "password": user1["password"],
+          "mass of ticket": user1['mass of ticket'],
+          "phone": user1["phone"],
+          "adres": user1["adres"],
+          "bd": user1["bd"],
+          "money": String(Number(user1["money"])+Number(withdrawalAmount))  
+        }
+      funcC(obj,user1["id"]);
+      alert("Знято "+withdrawalAmount+"$");
+         setWithdrawalAmount('');
+        
         // Отримання та обробка суми для відводу грошей
       };
     
@@ -617,19 +632,20 @@ let user1 = userData[user];
                 <option value="uk">Ukrainian</option>
                 </select>
                 <div>
-              <label htmlFor="withdrawal">Withdrawal Amount:</label>
+              <label className='table' htmlFor="withdrawal"><b className='textUserSettings'>Correct password:</b></label>
               <input
                  type="text"
                  id="withdrawal"
                 value={withdrawalAmount}
                 onChange={handleWithdrawalAmount}
                />
-               <button type="button" onClick={handleWithdrawalSubmit}>Withdraw</button>
+               <button type="button" className='buttonD' onClick={handleWithdrawalSubmit}>Withdraw</button>
             </div>
             <div className='buttondiv'>
             
             </div>
             </div>
+            
           </form>
         </div>
         

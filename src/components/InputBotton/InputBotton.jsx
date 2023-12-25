@@ -3,7 +3,7 @@ import React from "react";
 export const InterfaceTable = ({id, func, userOwner}) => {    
 if(id == -1){
    return(
-      <div className='form1'><b className='buttonLock'>change</b> <b className='buttonLock'><img src='https://uxwing.com/wp-content/themes/uxwing/download/user-interface/red-trash-can-icon.svg' width="20px" height="20px"/></b><b className='buttonLock'>cancel</b>
+      <div className='form1'><b className='buttonLock'>Change</b> <b className='buttonLock'><img src='https://uxwing.com/wp-content/themes/uxwing/download/user-interface/red-trash-can-icon.svg' width="20px" height="20px"/></b><b className='buttonLock'>cancel</b>
          <b className="buttonLock">copy</b> 
          
          

@@ -1,5 +1,6 @@
 .bg{
     margin-top: 20px;
+    margin-left: 30px;
 width: auto;
 height: auto;
 padding: 10px 10px 10px 10px;
@@ -8,6 +9,7 @@ background:linear-gradient(180deg,lightskyblue,azure,Moccasin,tomato);
 }
 .chatbg{
     margin-top: 20px;
+    margin-left: 30px;
 }
 .box_with_gamers{
     width: auto;

@@ -4,7 +4,7 @@
     
 }
 .whiteLable{
-    background-color: white;
+    background-color: rgb(228, 206, 245);
     border-color: red;
     
 }
@@ -16,7 +16,7 @@
 margin-left: 500px;
 height: 450px;
 width: 450px;
-background: linear-gradient(60deg,darkblue,orange,azure,white);
+background: linear-gradient(60deg,darkblue,rgb(107, 36, 158),rgb(217, 56, 242),rgb(237, 135, 230));
 }
 .button1{
     
@@ -44,5 +44,5 @@ color: white;
 .buttonHide{
 width: 30px;
 height: 30px;
-background-color: white;
+background-color: rgb(222, 174, 248);
 }

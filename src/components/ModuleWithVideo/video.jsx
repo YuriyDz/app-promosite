@@ -7,7 +7,7 @@ import "./video.css";
 import { getValue } from "@testing-library/user-event/dist/utils";
 import { fabClasses } from "@mui/material";
 
-
+///jjnvcx
 
 export const VideoBlock = ({func, srs}) =>{
   //const srs="";//"https://media.w3.org/2010/05/sintel/trailer.mp4";//"https://www.youtube.com/embed/tmg6d3T_T6Q";//"www.youtube.com/watch?v=IEDEtZ4UVtI";//"https://i.ytimg.com/vi/61r5hHrKu10/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&amp;rs=AOn4CLBnZbgZcHNX252YWZ5PIkg3mInfGw";//"";//*/"f";

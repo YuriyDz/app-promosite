@@ -208,26 +208,30 @@ return (
 <b className='MP'>Main page</b>
 </header>
 <div className='buttonsToogleSection'>
-<button className='homeButtonToogle'></button>
-<button className='homeButtonToogle1'></button>
+
 </div>
 
  <header class="header">
 
-        <h1>Кіберспортивна Подія</h1>
+        
     </header>
 
     <section class="event-info">
         <div class="container">
             <div class="event-details">
-                <h2>Деталі Події</h2> 
+            <p></p>
                 <div className='CardTable'>
+                    
                 <div className='section'>
+                <h1 className='forText'>Кіберспортивна Подія</h1>
+                <h2 className='forText'>Деталі Події</h2> 
                    {info.map((item,index)=>(
                     <Card data={item} index={index} nowOrFuture={nowOrFuture} isReady={isReady} date = {date}/>
                    ))
                 }  </div>
-                <div className='section'>               
+                <div className='section'>
+                <h1 className='forText'>Новини Кіберспорту</h1>
+                <h2 className='forText'>Деталі Новини</h2>                
                    {news.map((item,index)=>(
                     <CardNews data={item} funcSetIndex={funcSetIndex} id={index} naw={navigate}/>
                    ))

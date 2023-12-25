@@ -1,17 +1,22 @@
 .redLable{
     background-color: lightcoral;
+    border-color: red;
+    
 }
 .whiteLable{
-    background-color: white;
+    background-color: rgb(228, 206, 245);
+    border-color: red;
+    
 }
-.box{
-    background-color: aquamarine;
+
+.box{ 
     border-radius: 35px;
     text-align: center;
     margin-top: 100px;
 margin-left: 500px;
 height: 450px;
 width: 450px;
+background: linear-gradient(60deg,darkblue,rgb(107, 36, 158),rgb(217, 56, 242),rgb(237, 135, 230));
 }
 .button1{
     
@@ -21,6 +26,23 @@ width: 450px;
 height: 40px;
 width:  120px;
 background-color: green;
+transition-property: transform;
+animation-duration: 2000ms;
 color: white;
 
+
+}
+.button1:hover{
+    
+    transform: scale(1.25);
+    
+}
+
+
+
+
+.buttonHide{
+width: 30px;
+height: 30px;
+background-color: rgb(222, 174, 248);
 }

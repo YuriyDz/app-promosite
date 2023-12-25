@@ -206,3 +206,7 @@ font-size: x-large;
     background-size: cover;
     background-image: url(https://api.chas.news/img-srv/image/width=630,quality=85/media-storage/12_2021/756148808557036.jpg);
 }
+.forText{
+    text-align: center;
+    color: lightgray;
+}

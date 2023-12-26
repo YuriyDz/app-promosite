@@ -20,28 +20,34 @@ background: linear-gradient(90deg,lightskyblue,cyan,azure);
 display: flex;
 }
 .buttonsa{
-    
+    position: absolute;
     
     margin-top: 20px;
 
 border-color: red;
 border-width: 3px;
-margin-left: 30%;
-
+margin-top: 10px;
+margin-left: 40%;
+font-size: xx-large;
 height: 40px;
 width: auto;
-text-align: center;
 background-color: white;
 transition: all .5s ease-in-out;
 
+}
+
+.buttonsa:hover{
+    
+   transform: scale(1.25,1.25); 
+border-width: 6px;
+background-color: azure;
+}
+.buttonsa:active{
+    transform: scale(0,0);
+    border-width: 20px;
 }
 .textMain{
     margin-left: 1%;
     margin-top: 10px;
 }
-.buttonsa:hover{
-   transform: scale(1.2,1.2); 
-border-width: 6px;
-background-color: azure;
 
-}

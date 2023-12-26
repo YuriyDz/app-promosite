@@ -26,18 +26,19 @@ background: linear-gradient(60deg,darkblue,rgb(107, 36, 158),rgb(217, 56, 242),r
 height: 40px;
 width:  120px;
 background-color: green;
-transition-property: transform;
-animation-duration: 2000ms;
 color: white;
-
+transition: all .5s ease-in-out;
 
 }
 .button1:hover{
-    
+    background-color: darkgreen;
     transform: scale(1.25);
     
 }
-
+.button1:active{
+    transform: scale(0.75);
+    background-color: red;
+}
 
 
 

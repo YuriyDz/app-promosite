@@ -1,7 +1,6 @@
 .formMain{
 
     display: flex;
-    
     height: 60px;
    
     background: linear-gradient(90deg,lightskyblue,azure,Moccasin,tomato);
@@ -32,6 +31,7 @@
     color: red;
 }
 .textmoney{
+    
     font-size: xx-large;
     color: green;
     margin-left: auto;
@@ -109,6 +109,7 @@ text-align: left;
     justify-content: center
 }
 .buttonBack{
+    position: relative;
     margin-top: 15px;
     margin-left: 500px;
     background-color: green;
@@ -125,14 +126,14 @@ text-align: left;
     transform: scale(0.85);
 }
 .buttonsb{
-    
+    position: absolute;
     
     margin-top: 20px;
 
 border-color: red;
 border-width: 3px;
 margin-top: 10px;
-margin-left: 30%;
+margin-left: 40%;
 font-size: xx-large;
 height: 40px;
 width: auto;
@@ -143,9 +144,13 @@ transition: all .5s ease-in-out;
 
 .buttonsb:hover{
     
-   transform: scale(1.5,1.5); 
+   transform: scale(1.25,1.25); 
 border-width: 6px;
 background-color: azure;
+}
+.buttonsb:active{
+    transform: scale(0,0);
+    border-width: 20px;
 }
 .formMain1{
     background-color: wheat;

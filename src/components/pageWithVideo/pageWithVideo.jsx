@@ -91,9 +91,9 @@ return(
    {info.detailsr}
 </div>
    <div className="buttonForm">
-   <button className="buttonVP" onClick={toMainP}>Back</button>
-    <button className="buttonVP" onClick={outChat}>To chat</button>
-        <button className="buttonVP" onClick={outDetails}>To datails</button>
+   <button className="buttonVP" onClick={toMainP}>Назад</button>
+    <button className="buttonVP" onClick={outChat}>До чату</button>
+        <button className="buttonVP" onClick={outDetails}>Деталі</button>
         </div>
         </div>
         </div>
@@ -136,9 +136,9 @@ return(
         {info.detailsr}
 </div>
 <div className="buttonForm">
-<button className="buttonVP" onClick={toMainP}>Back</button>
-          <button className="buttonVP" onClick={outChat}>To chat</button>
-        <button className="buttonVP" onClick={outDetails}>To datails</button>
+<button className="buttonVP" onClick={toMainP}>Назад</button>
+          <button className="buttonVP" onClick={outChat}>До чату</button>
+        <button className="buttonVP" onClick={outDetails}>Деталі</button>
         </div>
         </div>
         </div>
@@ -162,9 +162,9 @@ else{
        {info.detailsr}
         </div>
         <div className="buttonForm">
-        <button className="buttonVP" onClick={toMainP}>Back</button>
-        <button className="buttonVP" onClick={outChat}>To chat</button>
-        <button className="buttonVP" onClick={outDetails}>To datails</button>
+        <button className="buttonVP" onClick={toMainP}>Назад</button>
+        <button className="buttonVP" onClick={outChat}>До чату</button>
+        <button className="buttonVP" onClick={outDetails}>Деталі</button>
         
        </div>
        </div>

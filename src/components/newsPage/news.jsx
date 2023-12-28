@@ -22,7 +22,7 @@ return(
 {(data.text.map((item,index1)=>{
     if(item[1] === undefined){return null;}
 if(item[0]===1){
-return(<h1 className='text.css'>{item[1]}</h1>);
+return(<div className='textBoxi'><h1 className='texto'>{item[1]}</h1></div>);
     }
     else{
         return(<img className='imgS' src={item[1]}></img>);

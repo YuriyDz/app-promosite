@@ -302,6 +302,7 @@ let user1 = userData[user];
           "mass of ticket": user1['mass of ticket'],
           "phone": user1["phone"],
           "adres": user1["adres"],
+          "carrier": user1["carrier"],
           "bd": user1["bd"],
           "money": String(Number(user1["money"])+Number(withdrawalAmount))  
         }
@@ -443,6 +444,7 @@ let user1 = userData[user];
       "phone": phone,
       "adres": address,
       "bd": birthdate,
+      "carrier": user1["carrier"],
       "money": user1['money']  
     }
   funcC(obj,user1["id"]);

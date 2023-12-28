@@ -3,7 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import {UserSettingsPage} from "./components/settings/setings.jsx";
 import './App.module.css';
 import { NewsPage } from "./components/newsPage/news.jsx";
-
+import { PageInfo } from "./components/PageWithInfoMatch/pageI.jsx";
 import { SharedLayout } from "./components/Shayredlayout/shayredlayout.jsx";
 /*import { ChatTable } from './components/chatTable/chatTable';
 import modalWindow from './components/modalWindowInput/modalWindw';
@@ -112,7 +112,7 @@ JSON.parse(window.localStorage.getItem('userid')) ?? []
         <Route path="/news" element={<NewsPage data={news} index={JSON.parse(window.localStorage.getItem('newsid'))}/>}/>
         <Route path="/home" element={<SharedLayout user={user} />}/>
         <Route path="/" element={<Home funcC={updateUserData} funcU={getmas} func={getId} user={user} userTickets={usersData[Number(JSON.parse(window.localStorage.getItem('userid')) ?? [])]} funcp={getIdp} funcSetIndex={setIdNews} news={news}/>} />
-        
+        <Route path="/info" element={<PageInfo id={idp} type = {1} userData = {usersData} user={Number(JSON.parse(window.localStorage.getItem('userid')) ?? [])} func={updateUserData}/>}/>
         <Route path="/login" element={<Login usersData={usersData} func={changeUser}/>} />
         <Route path="/register" element={<Register usersData = {usersData} func = {getmas}/>} />
         <Route path="/userSettings" element={<UserSettingsPage updateUD={getmas} func={changeUser} funcC={updateUserData} funcU={getmas} userData = {usersData} user={Number(JSON.parse(window.localStorage.getItem('userid')) ?? [])}/>} />

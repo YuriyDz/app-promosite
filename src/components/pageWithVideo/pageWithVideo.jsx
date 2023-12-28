@@ -5,6 +5,7 @@ import {VideoBlock}  from "../ModuleWithVideo/video";
 import './pageWithVideo.css';
 import { Chat } from "../chat/chat";
 import { useNavigate } from "react-router-dom";
+import { PageInfo } from "../PageWithInfoMatch/pageI";
 //import { Socket } from "dgram";
 export function PageVideo({user,chatId,eventId}){
   const navigate = useNavigate();
@@ -98,25 +99,7 @@ return(
         </div>
         </div>
     <div className="bg">
-{info["gamers"].map(function(elements){
-return(
-<div className="box_with_gamers">
-<div className="image"><img src = {elements.image}></img>
-<li className="userText">{elements.name}</li></div>
-
-    <div>
-    <li className="ct1">Gamer name</li>
-    <li className="ct">{elements.name}</li>
-    <li className="ct1">Team where gamer play</li>
-    <li className="ct">{elements.team}</li>
-    <li className="ct1">ore datails about this gamer</li>
-    <li className="ct">{elements.details}</li>
-    </div>
-</div>
-
-);
-})
-}
+<PageInfo id = {eventId} type={2}></PageInfo>
 <p></p>
 </div>
 </div>);

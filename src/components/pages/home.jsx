@@ -5,7 +5,10 @@ import { Grid, Typography } from '@mui/material';
 import { Items } from './homeMap';
 
 import './home.css';
-const CardNews = ({data,funcSetIndex,id,naw})=>{
+const massMouth = ["Січня","Лютого","Березня","Квітня","Травня","Червня","Липня","Серпня","Вересня","Жовтня","Листопада","Грудня"];
+const measseges = ["Натисніть щоб зайти на матч якщо маєте квиток","Натисніть щоб дізнатись подробиці матчу","Натисніть щоб купити квиток","Натисніть щоб подивитись новину","Тут представлені матчі які відбудуться","Події в яких ви маєте прийняти участь"];
+const CardNews = ({data,funcSetIndex,id,naw,type})=>{
+    if(type!== 4){return null;}
     let a = data.text;
     if(a === undefined){
         return null;
@@ -21,9 +24,9 @@ const CardNews = ({data,funcSetIndex,id,naw})=>{
     return(
         <li>
 <button className='newsTitle' onClick={goToNewsPage}>
-    {p1[0]==2?<img src={p1[1]}></img>:<b>{p1[1]}</b>}
-    {p2 === undefined?null:p2[0]==2?<img src={p2[1]}></img>:<b>{p2[1]}</b>}
-    <p>Want khow more click the button</p>
+    {p1[0]==2?<li><img src={p1[1]} height="300px" width="auto"></img></li>:<li className='textDetForOpis'>{p1[1]}</li>}
+    {p2 === undefined?null:p2[0]==2?<li><img src={p2[1]}  height="300px" width="auto"></img></li>:<li className='textDetForOpis'>{p2[1]}</li>}
+    <p className='textForNumbers'>Want khow more click the button</p>
     
 </button>
 </li>
@@ -47,41 +50,308 @@ return(<p>{item[1]}</p>);
 );//*/
 return <p>{data.text}</p>
 }
+const Card1 = ({data, index,nowOrFuture,isReady,type}) =>{
+    if(type !== 5){return null;}
+    let date = new Date();
+    /* alert(data);
+     for(let j in data){
+      alert(j);
+     }*/
+  //    let idm;
+    /*  for(let i in elements){
+          
+          idm = elements[i];
+          break;
+      }*/
+    
+      
+      let dh = String(data.dateToOpen).split(' ');
+      let dm = dh[0].split('.');
+           // let t1 = data.teams[0];
+            
+            //let t2 =data.teams[1];
+            //console.log(t1,t2);
+            let m=[];
+            
+            
+            console.log(data.teams);
+            for(let i in data.teams){
+              m.push(i);
+           //   alert(data.teams[i]);
+            }
+         //   alert(m);
+            
+            /*
+            let t1= m[0];
+            let t2 = m[1];
+            t1= data.teams[t1];
+            t2=data.teams[t2];*/
+          
+              let ti = "";
+              for(let j in data){
+                  if(j === "teams"){ti = j;}
+                  //alert(j);
+              }
+              let ar = data[ti];
+           console.log(typeof(ar));
+            let p =[];
+            for(let u in ar){
+              console.log(ar[u]);
+                
+                  //alert(u);
+                  p.push(ar[u]);
+                }
+            
+            let t1 = p[0];
+            let t2 = p[1];
+            let mu = [];
+            console.log(t2);
+               for(let l in t2){
+                mu.push(t2[l]);
+               }
+              let mi = [];
+          console.log(t1);
+             for(let l in t1){
+              mi.push(t1[l]);
+             }
+             
+             let ret = ((Number(mi[2])+Number(mi[3])+Number(mi[4]))/mi[2]).toFixed(2);
+             let ret2 = ((Number(mu[2])+Number(mu[3])+Number(mu[4]))/mu[2]).toFixed(2);
+          if(nowOrFuture(date.getDate()+"."+String(Number(date.getMonth())+1)+"."+date.getFullYear()+" "+date.getHours()+':'+date.getMinutes(),String(data.dateToOpen))===true){
+      
+        return(<li>
+           <div className='homeButtons' /*onClick={() =>isReady(idm,data.name,data.ticketPrice)}*/>
+           <li className='textDetForOpis'>Назва події: {data.name}</li>
+           <li className='textDetForOpis'>Час: <nobr className="textForNumbers">{dh[1]}</nobr> Дата: <nobr className="textForNumbers">{dm[0]} {massMouth[Number(dm[1])-1]}</nobr> </li>
+           <li className='textDetForOpis'>1 Команда: {mi[1]} Імена учасників:{data["gamers"].map(function(elements){
+           
+           if(mi[1]===elements.team){   
+return(
+<div >
 
-const Card = ({data, index,nowOrFuture,isReady,date}) =>{
 
+    <div>
+    <li></li>
+    <li className="textForNumbers">{elements.name}</li>
+    
+    </div>
+</div>
+);}
+})}</li>
+           <li className='textDetForOpis'>2 Команда: {mu[1]} Імена учасників:{data["gamers"].map(function(elements){
+           
+            if(mu[1]===elements.team){
+           return(
+           <div>
+          
+           
+               <div>
+              
+    <li className="textForNumbers">{elements.name}</li>
+               </div>
+           </div>
+           );}
+           })}</li>
+           
+           <li className='textDetForOpis'>Ціна на квиток: {<nobr className='text2'>{data.ticketPrice}$</nobr>}</li>
+           </div>
+           </li>
+           );}
+           
+       //   }
+  
+  };
+  const Card2 = ({data, index,nowOrFuture,isReady,type}) =>{
+    if(type !== 6){return null;}
+    let date = new Date();
+    let a = index["match"];
+    console.log(a);
+    /* alert(data);
+     for(let j in data){
+      alert(j);
+     }*/
+  //    let idm;
+    /*  for(let i in elements){
+          
+          idm = elements[i];
+          break;
+      }*/
+    
+      
+      let dh = String(data.dateToOpen).split(' ');
+      let dm = dh[0].split('.');
+           // let t1 = data.teams[0];
+            
+            //let t2 =data.teams[1];
+            //console.log(t1,t2);
+            let m=[];
+            
+            
+            console.log(data.teams);
+            for(let i in data.teams){
+              m.push(i);
+           //   alert(data.teams[i]);
+            }
+         //   alert(m);
+            
+            /*
+            let t1= m[0];
+            let t2 = m[1];
+            t1= data.teams[t1];
+            t2=data.teams[t2];*/
+          
+              let ti = "";
+              for(let j in data){
+                  if(j === "teams"){ti = j;}
+                  //alert(j);
+              }
+              let ar = data[ti];
+           console.log(typeof(ar));
+            let p =[];
+            for(let u in ar){
+              console.log(ar[u]);
+                
+                  //alert(u);
+                  p.push(ar[u]);
+                }
+            
+            let t1 = p[0];
+            let t2 = p[1];
+            let mu = [];
+            console.log(t2);
+               for(let l in t2){
+                mu.push(t2[l]);
+               }
+              let mi = [];
+          console.log(t1);
+             for(let l in t1){
+              mi.push(t1[l]);
+             }
+             let r = false;
+             let ret = ((Number(mi[2])+Number(mi[3])+Number(mi[4]))/mi[2]).toFixed(2);
+             let ret2 = ((Number(mu[2])+Number(mu[3])+Number(mu[4]))/mu[2]).toFixed(2);
+           // alert(a);
+          if(nowOrFuture(date.getDate()+"."+String(Number(date.getMonth())+1)+"."+date.getFullYear()+" "+date.getHours()+':'+date.getMinutes(),String(data.dateToOpen))===true){
+    
+            for(let i in a){
+        console.log(a[i],"dvkkbfkb");
+        if(a[i] === data.name && data.name !== undefined){
+            r = true;
+            break;
+        }}
+        if(r === true){
+     
+        return(<li>
+           <div className='homeButtons' /*onClick={() =>isReady(idm,data.name,data.ticketPrice)}*/>
+           <li className='textDetForOpis'>Назва події: {data.name}</li>
+           <li className='textDetForOpis'>Час: <nobr className="textForNumbers">{dh[1]}</nobr> Дата: <nobr className="textForNumbers">{dm[0]} {massMouth[Number(dm[1])-1]}</nobr> </li>
+           <li className='textForNumbers'>Ви повинні прийняти участь у ції події</li>
+           </div>
+           </li>
+           );}
+          }
+          else{
+            return null;
+          }
+       //   }
+  
+  };
+const Card = ({data, index,nowOrFuture,isReady,type}) =>{
+    if( type ===5 || type ===4 || type === 6){return null;}
+    let date = new Date();
+  /* alert(data);
+   for(let j in data){
+    alert(j);
+   }*/
 //    let idm;
   /*  for(let i in elements){
         
         idm = elements[i];
         break;
     }*/
+  
     
     let dh = String(data.dateToOpen).split(' ');
-        if(nowOrFuture(date.getDate()+"."+String(Number(date.getMonth())+1)+"."+date.getFullYear()+" "+date.getHours()+':'+date.getMinutes(),String(data.dateToOpen))===true){
+    let dm = dh[0].split('.');
+         // let t1 = data.teams[0];
+          
+          //let t2 =data.teams[1];
+          //console.log(t1,t2);
+          let m=[];
+          
+          
+          console.log(data.teams);
+          for(let i in data.teams){
+            m.push(i);
+         //   alert(data.teams[i]);
+          }
+       //   alert(m);
+          
+          /*
+          let t1= m[0];
+          let t2 = m[1];
+          t1= data.teams[t1];
+          t2=data.teams[t2];*/
+        
+            let ti = "";
+            for(let j in data){
+                if(j === "teams"){ti = j;}
+                //alert(j);
+            }
+            let ar = data[ti];
+         console.log(typeof(ar));
+          let p =[];
+          for(let u in ar){
+            console.log(ar[u]);
+              
+                //alert(u);
+                p.push(ar[u]);
+              }
+          
+          let t1 = p[0];
+          let t2 = p[1];
+          let mu = [];
+          console.log(t2);
+             for(let l in t2){
+              mu.push(t2[l]);
+             }
+            let mi = [];
+        console.log(t1);
+           for(let l in t1){
+            mi.push(t1[l]);
+           }
+           
+           let ret = ((Number(mi[2])+Number(mi[3])+Number(mi[4]))/mi[2]).toFixed(2);
+           let ret2 = ((Number(mu[2])+Number(mu[3])+Number(mu[4]))/mu[2]).toFixed(2);
+           let time = nowOrFuture(date.getDate()+"."+String(Number(date.getMonth())+1)+"."+date.getFullYear()+" "+date.getHours()+':'+date.getMinutes(),String(data.dateToOpen));
+        if(time===true){
+    
       return(<li>
          <button className='homeButtons' /*onClick={() =>isReady(idm,data.name,data.ticketPrice)}*/onClick={()=>isReady(data.id,data.name,data.ticketPrice)}>
-         <p className='text'>{data.name}</p>
-         <p className='text'>Час: {dh[1]}</p>
-         <p className='text'>Місце: {data.place}</p>
-         <p className='text'> &copy; {dh[0]} Кіберспортивна Подія. Усі права захищені.</p>
-         <p className='text'>Ціна на квиток: {<nobr className='text2'>{data.ticketPrice}$</nobr>}</p>
+         <li className='textDetForOpis'>Назва події: {data.name}</li>
+         <li className='textDetForOpis'>Час: <nobr className="textForNumbers">{dh[1]}</nobr> Дата: <nobr className="textForNumbers">{dm[0]} {massMouth[Number(dm[1])-1]}</nobr> </li>
+       <li className='textDetForOpis'>Місце проведення: <nobr className="textForNumbers">{data.place}</nobr></li>
+         <li className='textDetForOpis'>1 Команда: <nobr className="textForNumbers">{mi[1]}</nobr> Загальний рейтинг: <nobr className="textForNumbers">{ret}</nobr></li>
+                <li className='textDetForOpis'>2 Команда: <nobr className="textForNumbers">{mu[1]}</nobr> Загальний рейтинг: <nobr className="textForNumbers">{ret2}</nobr></li>
+               
+         <li className='textDetForOpis'>Ціна на квиток: {<nobr className='text2'>{data.ticketPrice}$</nobr>}</li>
          </button>
          </li>
          );}
          else{
             return(<li>
                 <button className='homeButtonsF' onClick={()=>isReady(data.id,data.name,data.ticketPrice)}>
-                <p className='textF'>{data.name}</p>
-                <p className='textF'>Час: {dh[1]}</p>
-                <p className='textF'>Місце: {data.place}</p>
-                <p className='textF'>&copy; {dh[0]} Кіберспортивна Подія. Усі права захищені.</p>
-                <p className='textF'>Ціна на квиток {<nobr className='text2'>{data.ticketPrice}$</nobr>}</p>
+                <li className='textDetForOpis'>Назва події: {data.name}</li>
+                <li className='textDetForOpis'>Час: <nobr className="textForNumbers">{dh[1]}</nobr> Дата: <nobr className="textForNumbers">{dm[0]} {massMouth[Number(dm[1])-1]}</nobr> </li>
+       <li className='textDetForOpis'>Місце проведення: <nobr className="textForNumbers">{data.place}</nobr></li>
+                <li className='textDetForOpis'>1 Команда: <nobr className="textForNumbers">{mi[1]}</nobr> Загальний рейтинг: <nobr className="textForNumbers">{ret}</nobr></li>
+                <li className='textDetForOpis'>2 Команда: <nobr className="textForNumbers">{mu[1]}</nobr> Загальний рейтинг: <nobr className="textForNumbers">{ret2}</nobr></li>
+                <li className='textDetForOpis'>Ціна на квиток {<nobr className='text2'>{data.ticketPrice}$</nobr>}</li>
                 </button>
                 </li>
                 );
             }
-   
+     //   }
 
 };
 
@@ -90,11 +360,13 @@ export const Home = ({funcC,func,user,userTickets,funcp,funcSetIndex,news}) => {
     let date = new Date();
     const navigate = useNavigate();
 const[info,setInfo]= useState(['nothing']);
+const[swichMode,setSwichMode]=useState(1);
+//const[margin,setMargin]=useState([0,1000,2000,3000]);
 async function getmas(){
     try{
   const a = await axios.get("http://localhost:3000/Events");
 
-setInfo(a.data);
+await setInfo(a.data);
 }
 catch{
   console.error("Невдалось завантажити сторінку. Можливо у вас відсутнє підключення до інтернету");
@@ -131,8 +403,13 @@ case 'u':
    // alert(id);
   //eee  window.localStorage.setItem('eventid', JSON.stringify(id));
   funcp(id);
+  if(swichMode === 2){
+    navigate("/info", { replace: true });
+    return;
+  }
     let ut;
     let money;
+    
 for(let  i in userTickets){
     if(i === "mass of ticket"){
         ut = userTickets[i];
@@ -143,7 +420,7 @@ for(let  i in userTickets){
 }
 for(let i of ut){
     if(i === name){
-        navigate("/videoPage", { replace: true });
+        (swichMode === 1?navigate("/videoPage", { replace: true }):alert("Ви вже купили цей квиток"));
         return;
     }
 }
@@ -151,6 +428,7 @@ for(let i of ut){
 //if(prompt("Ви дійсно хочете купити квиток? Ви завжди зможете переглянути його в списку ваших квитків")===false){
   //  return;
 //alert(money+" "+id);
+if(swichMode === 3){
 if(money - price >=0){
     
     
@@ -169,14 +447,23 @@ if(money - price >=0){
     }
     funcC(obj,idu);
     funcp();
-    navigate("/videoPage", { replace: true });
-    
+    //navigate("/videoPage", { replace: true });
+    alert("Ви успішно купили квиток на "+name);
     return;
 }
 alert("У вас недостатньо коштів");
- } 
+ }} 
+ const swickm = (a) => {
+if(swichMode === 6 && a === 1){
+   a=-5;
+}
+if(swichMode === 1 && a=== -1){
+    a=5;
+}
+setSwichMode(swichMode + a);
+ };
 function nowOrFuture(datenow,dateevent){
-    
+    //alert(dateevent+" "+datenow);
     let d1 = dateevent.split(' ');
     let d2 = datenow.split(' ');
     let massivewithmounth = [0,31,59,90,120,151,181,212,243,273,304,334,365];
@@ -184,13 +471,15 @@ function nowOrFuture(datenow,dateevent){
     let massd2 = d2[0].split('.');
     let days1 = Number(massd1[0]) + massivewithmounth[Number(massd1[1])] + (365*Number(massd1[2]));
     let days2 = Number(massd2[0]) + massivewithmounth[Number(massd2[1])] + (365*Number(massd2[2]));
-    
+    if(days1>days2){
+        return true;
+    }
     if(days1 == days2){
         let h = d1[1].split(':');
         let hd = d2[1].split(':');
         let hfn = (Number(h[0])*60)+Number(h[1]);
         let hfd = (Number(hd[0])*60)+Number(hd[1]);
-        //alert(hfn+" "+hfd);
+          
         if(hfn>hfd){
              return true;
         }
@@ -198,7 +487,7 @@ function nowOrFuture(datenow,dateevent){
    
 return false;
 }
-
+console.log(userTickets);
 return (
 <body className='bodyColor'>
 <header className='topTable'>
@@ -208,7 +497,8 @@ return (
 <b className='MP'>Main page</b>
 </header>
 <div className='buttonsToogleSection'>
-
+<button className='homeButtonToogle' onClick={()=>swickm(-1)}  ></button>
+<button className='homeButtonToogle1'onClick={()=>swickm(1)}></button>
 </div>
 
  <header class="header">
@@ -222,20 +512,26 @@ return (
             <p></p>
                 <div className='CardTable'>
                     
-                <div className='section'>
-                <h1 className='forText'>Кіберспортивна Подія</h1>
-                <h2 className='forText'>Деталі Події</h2> 
+                <div className='section' id='toEvent'>
+                <h2 className='forText'>{measseges[swichMode-1]}</h2> 
                    {info.map((item,index)=>(
-                    <Card data={item} index={index} nowOrFuture={nowOrFuture} isReady={isReady} date = {date}/>
+                    <Card data={item} index={index} nowOrFuture={nowOrFuture} isReady={isReady} type={swichMode}/>
                    ))
-                }  </div>
-                <div className='section'>
-                <h1 className='forText'>Новини Кіберспорту</h1>
-                <h2 className='forText'>Деталі Новини</h2>                
+                }  
+                   {info.map((item,index)=>(
+                    <Card1 data={item} index={index} nowOrFuture={nowOrFuture} isReady={isReady} type={swichMode}/>
+                   ))
+                }  
+                      
                    {news.map((item,index)=>(
-                    <CardNews data={item} funcSetIndex={funcSetIndex} id={index} naw={navigate}/>
+                    <CardNews data={item} funcSetIndex={funcSetIndex} id={index} naw={navigate} type={swichMode}/>
                    ))
-                }    </div>             
+                }
+                {info.map((item,index)=>(
+                    <Card2 data={item} index={userTickets===undefined?null:userTickets["carrier"]} nowOrFuture={nowOrFuture} type={swichMode}/>
+                   ))
+                }    
+                </div>        
                   
                 </div>
                  

@@ -10,9 +10,9 @@ background-color: black;
     
    background: linear-gradient(90deg,blue,tomato);
     
-    margin-left: 55px;
+   
     margin-top: 500px;
-    width: 890px;
+    width: 900px;
     height: 25px;
   
 
@@ -40,7 +40,7 @@ background-color: black;
 .textsec{
     font-weight: 900;
     margin-left: 10px;
-    width: 80px;
+    width: 100px;
     color: red;
 }
 .boxChangef{

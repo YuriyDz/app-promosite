@@ -353,11 +353,11 @@ return(
 </div>
 
     <div>
-    <li className="textDescription" >Gamer name</li>
+    <li className="textDescription" >Ім'я гравця</li>
     <li className="textGetDatanew">{elements.name}</li>
-    <li className="textDescription">Team where gamer play</li>
+    <li className="textDescription">Команда в якій грає гравець</li>
     <li className="textGetDatanew" >{elements.team}</li>
-    <li className="textDescription">More datails about this gamer</li>
+    <li className="textDescription">Больше інформації про цього гравця</li>
     <li className="textGetDatanew">{elements.details}</li>
     </div>
 </div>

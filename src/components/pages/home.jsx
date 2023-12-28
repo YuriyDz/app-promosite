@@ -26,28 +26,12 @@ const CardNews = ({data,funcSetIndex,id,naw,type})=>{
 <button className='newsTitle' onClick={goToNewsPage}>
     {p1[0]==2?<li><img src={p1[1]} height="300px" width="auto"></img></li>:<li className='textDetForOpis'>{p1[1]}</li>}
     {p2 === undefined?null:p2[0]==2?<li><img src={p2[1]}  height="300px" width="auto"></img></li>:<li className='textDetForOpis'>{p2[1]}</li>}
-    <p className='textForNumbers'>Want khow more click the button</p>
+    <p className='textForNumbers'>Хочете знати більше натисніть</p>
     
 </button>
 </li>
     );
-/*
-return(
-    <li>
-<button className='newsTitle' onClick={()=>funcSetIndex(id)}>
- {(a.map((item,index)=>{
-if(index === 2)
-if(item[0]===1){
-return(<p>{item[1]}</p>);
-    }
-    else{
-        return null;//(<img src={item[1]}></img>);
-    }
-})
- )}
-</button>
-</li>
-);//*/
+
 return <p>{data.text}</p>
 }
 const Card1 = ({data, index,nowOrFuture,isReady,type}) =>{
@@ -192,13 +176,7 @@ return(
               m.push(i);
            //   alert(data.teams[i]);
             }
-         //   alert(m);
-            
-            /*
-            let t1= m[0];
-            let t2 = m[1];
-            t1= data.teams[t1];
-            t2=data.teams[t2];*/
+         
           
               let ti = "";
               for(let j in data){

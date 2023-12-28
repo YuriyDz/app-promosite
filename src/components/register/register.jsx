@@ -102,7 +102,21 @@ import { useNavigate } from "react-router-dom";
               "id":usersData[usersData.length-1]["id"]+1,
               "name": userNamea,
               "email": email,
-              "password": password
+              "password": password,
+  "carrier": {
+    "match": [
+    
+    ],
+    "wins": 0,
+    "lose": 0,
+    "drawl": 0
+  },
+  "mass of ticket": [
+  ],
+  "phone": "",
+  "adres": "",
+  "bd": "",
+  "money": 0
 
             }
             console.log(mas);

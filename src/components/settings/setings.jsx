@@ -488,10 +488,11 @@ let user1 = userData[user];
    // console.log(user1[i],i,typeof(i));
   //}
   let a = [];
-  for(let j in mask[4]){
+  for(let j in mask[5]){
    /// console.log(a[j]+"  "+j);
-    a.push(mask[4][j]);
+    a.push(mask[5][j]);
   }
+  //alert(a);
   //console.log(mask[4]);
   const backToMainPage=()=>{
     navigate("/", { replace: true });

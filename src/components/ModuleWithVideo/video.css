@@ -44,6 +44,7 @@ background-color: black;
     color: red;
 }
 .boxChangef{
+    z-index: 15;
     position:absolute;
     display: flex;
     background: rgba(0, 0, 0, 0);
@@ -74,7 +75,7 @@ background-color: black;
   
     position: absolute;
     
-    z-index:5;
+    z-index:15;
     text-align: center;
     display: flex;
     margin-left: 17%;
@@ -137,4 +138,11 @@ background: linear-gradient(60deg,darkblue,orange,azure,white);
 }
 .styleForYoutubeV{
     margin-left: 0px;
+}
+.fullSp{
+    z-index: 10;
+    margin-right: 600px;
+}
+.fullSpF{
+    z-index: 10;
 }

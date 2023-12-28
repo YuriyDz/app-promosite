@@ -198,12 +198,14 @@ else{
 }
 };
 */
+
 export const VideoBlock = ({func, srs}) =>{
   //const srs="";//"https://media.w3.org/2010/05/sintel/trailer.mp4";//"https://www.youtube.com/embed/tmg6d3T_T6Q";//"www.youtube.com/watch?v=IEDEtZ4UVtI";//"https://i.ytimg.com/vi/61r5hHrKu10/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&amp;rs=AOn4CLBnZbgZcHNX252YWZ5PIkg3mInfGw";//"";//*/"f";
-const[size,setSize]= useState(["900px","500px"]);
+
+  const[size,setSize]= useState(["900px","500px"]);
 const[isChange,setIsChange] = useState(0);
 const[isPlay,setIsPlay]=useState(false);
-const[secounds, setSecounds]= useState(0);
+const[secounds, setSecounds]= useState(JSON.parse(window.localStorage.getItem(String(srs))) ?? []);
 const[buttonPressed,setButtonPressed]=useState(true);
 const[hide,setHide]=useState(false);
 const[videoDontPlayWithVideoElement,setVideoDontPlayWithVideoElement]=useState(false);
@@ -220,16 +222,25 @@ const volumePlus = (e,value) =>{
 setVideoPover(parseFloat(e.target.value));
 };
 // ----end----
-const fullScreen = () =>{
-  if(size[0]==="100%"){
-    setSize(["900px","500px"]);
+async function fullScreen (){
+  
+  if(size[0]==="1500px"){
+    await setHide(false);
+   await setSize(["900px","500px"]);
+   
   }
   else{
-setSize(["100%","800px"]);
+    await setHide(false);
+await setSize(["1500px","800px"]);
+
+
   }
-  func(size[0]);
+  //await func(size[0]);
+  playAggaof(secounds);
+  
 }
-if(isPlay == true && videoRef.current.getCurrentTime){setTimeout(function() {
+//console.log(videoRef.current.getCurrentTime);
+if(isPlay == true && (videoRef.current.getCurrentTime !== undefined && videoRef.current.getCurrentTime !== null) && videoRef.current){setTimeout(function() {
 /*  if(video.currentTime === video.duration){
     setIsPlay(false);
     setButtonPressed(true);
@@ -237,14 +248,16 @@ if(isPlay == true && videoRef.current.getCurrentTime){setTimeout(function() {
   }
   setSecounds(video.currentTime);
   */
+ console.log(videoRef.current.getCurrentTime());
+  window.localStorage.setItem(String(srs), JSON.stringify(secounds));
   setSecounds(videoRef.current.getCurrentTime);
   setIsChange(videoRef.current.getDuration);
 }, 100);
 }
 else{
-  if(videoRef.current){
+  //if(videoRef.current){
  // setSecounds(videoRef.current.getCurrentTime);
-}}
+}
 const pause = () =>{
  if(isPlay=== false){
   setIsPlay(true);
@@ -283,12 +296,23 @@ setIsPlay(true);
 //video.current.onPlay();
 
 };
+const playAggaof = (a) => {
+  if(videoRef.current){
+  setSecounds(a);
+  videoRef.current.seekTo(secounds, 'seconds');
+  videoPlayAggain();
+}
+else{
+  setTimeout(function(){
+  playAggaof(a)},1000);
+}
+}
 const change = (e)=>{
   
   let t = parseFloat(e.target.value);
   //alert(t);
   setSecounds(t);
-  videoRef.current.seekTo(secounds, 'seconds')
+  videoRef.current.seekTo(secounds, 'seconds');
 //videoRef.current.seekTo(secounds, 'fraction');
 }
 const videoStop =()=>{
@@ -337,10 +361,10 @@ const hideControlsWithFullScreen=(checkout)=>{
 
 if(videoDontPlayWithVideoElement === false){
 return(
-  <div >
+  <div className={size[0] === "900px"?"fullSp":"fullSpF"}>
     <div cssName="fullScreen">
-    <div className={size[0] === "100%"?"fullcontrols":"boxChange"} id="ch" onMouseEnter={size[0]==="100%"?()=>hideControlsWithFullScreen(true):null} onMouseLeave={size[0]==="100%"?()=>hideControlsWithFullScreen(false):null}>
-    {hide === false?(<div className="controlsForVideo"><li className="textsec">{conwertToNormalTime(Math.ceil(Number(secounds)*100)/100)}</li>
+    <div className={size[0] === "1500px"?"fullcontrols":"boxChange"} id="ch" onMouseEnter={size[0]==="1500px"?()=>hideControlsWithFullScreen(true):null} onMouseLeave={size[0]==="1500px"?()=>hideControlsWithFullScreen(false):null}>
+    {hide === false || size[0] === "900px"?(<div className="controlsForVideo"><li className="textsec">{conwertToNormalTime(Math.ceil(Number(secounds)*100)/100)}</li>
     <button onClick={pause} className={buttonPressed === true?"buttonChangeClicked":"buttonChange"}>P</button>
     <div id = "s" >
      <input className="sider"
@@ -372,7 +396,7 @@ return(
     </div>):null}
     </div>
        <div>
-    <ReactPlayer ref={videoRef}  url="https://www.youtube.com/embed/5bUHLJKRHo4"  width={size[0]} height={size[1]} controls={false} playing={isPlay} volume={videoPover}  muted={videoPover===0?true:false}/>
+    <ReactPlayer ref={videoRef}  url={srs}  width={size[0]} height={size[1]} controls={false} playing={isPlay} volume={videoPover}  muted={videoPover===0?true:false}/>
       </div>
    
    

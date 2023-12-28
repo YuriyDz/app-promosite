@@ -65,6 +65,8 @@ background:linear-gradient(180deg,lightskyblue,azure,Moccasin,tomato);
     justify-content: center;
 }
 .datailsOfEvent{
+    margin-left: 900px;
+    position: absolute;
     height: 425px;
     width: 600px;
     padding-bottom: 100px;

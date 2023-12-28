@@ -183,6 +183,10 @@ export const PageInfo = ({id , type,userData,user,func})=>{
             setTeam(a);
            }
            const finishReg = () =>{
+            if(team === "?"){
+                alert("Вкажіть назву команди");
+                return;
+            }
             let obj = info;
             let idForAdd = 0;
             for(let i of info["gamers"]){
@@ -207,6 +211,7 @@ export const PageInfo = ({id , type,userData,user,func})=>{
             func(objP,m[0]);
             getmas();
             setSplitType(1);
+            goToMainPage();
         }
             console.log(userInfo);
             //userInfo.map((e)=>{console.log(e)});
@@ -226,16 +231,19 @@ export const PageInfo = ({id , type,userData,user,func})=>{
         <button className='buttonSubmitChanges3' type="submit" onClick={()=>changeTeam(infoForTwoTeam[1])}>{infoForTwoTeam[1]}</button>
         <li className="textB">Ви граєте в комнді {team}</li>
         <li className="textB">Добавте опису про себе</li>
-        <label htmlFor="birthdate"></label>
+        <div className="divForRegButt">
+        <label className="tableClassName" htmlFor="birthdate"></label>
               <input 
                 type="text"
                 id="birthdate"
                 value={descriptionGamer}
                 onChange={handleBirthdateChange}
               />
+              </div>
         <li className="textB">Ваш опис: {descriptionGamer}</li>
-<button onClick={finishReg}>Підтвердити реєстрацію</button>
-
+        <div className="divForRegButt">
+<button className="button1" onClick={finishReg}>Підтвердити реєстрацію</button>
+</div>
                </div>
                );
         }

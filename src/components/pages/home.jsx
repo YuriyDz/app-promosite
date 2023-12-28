@@ -454,6 +454,12 @@ if(money - price >=0){
 alert("У вас недостатньо коштів");
  }} 
  const swickm = (a) => {
+    if(user==="quest" && swichMode === 5 && a === 1){
+        a=-4;
+    }
+    if(user==="quest" && swichMode === 1 && a === -1){
+        a=4;
+    }
 if(swichMode === 6 && a === 1){
    a=-5;
 }

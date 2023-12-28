@@ -26,11 +26,11 @@ export function PageVideo({user,chatId,eventId}){
 
     });*/
     const viewVideo=(a)=>{
-if(a === '100%'){
-  setOnlyVideo(false);
+if(a === '900px'){
+  setOnlyVideo(true);
 }
 else{
-  setOnlyVideo(true);
+  setOnlyVideo(false);
 }
     };
 async function getmas(){

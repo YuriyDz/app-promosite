@@ -249,6 +249,7 @@ return(
 );
 }
 */
+import { Chat } from '../chat/chat';
     import './settings.css';
     import React, { useState } from 'react';
     import { useNavigate } from "react-router-dom";
@@ -648,7 +649,7 @@ let user1 = userData[user];
             
             </div>
             </div>
-            
+            <Chat user={mask[1]} chatId2={"ffb"} />
           </form>
         </div>
         
@@ -656,3 +657,5 @@ let user1 = userData[user];
     }
 
 //export default UserSettingsPage;
+//mask[1]
+//<Chat user={mask[1]} chatId2={"ffb"} />

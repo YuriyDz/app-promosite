@@ -188,3 +188,21 @@ background-color: azure;
     width: 300px;
     background-color: white;
 }
+.formMain {
+    display: flex;
+    height: 60px;
+    background: linear-gradient(90deg, lightskyblue, azure, Moccasin, tomato);
+    position: relative;
+}
+
+.formMain .chatContainer {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.Settingtables {
+}
+.Chat {
+    margin-left: 20px; 
+}
